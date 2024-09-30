@@ -1,5 +1,5 @@
 # Swap Meet
-#Hi #Hello
+
 ## Skills Assessed
 
 - Understanding and following code specifications
