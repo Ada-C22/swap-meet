@@ -73,7 +73,6 @@ In Wave 1 we will create the `Vendor` class.
 - This method removes the matching item from the `inventory`
 - This method returns the item that was removed
 - If there is no matching item in the `inventory`, the method should return `False`
-Hi
 
 ### Wave 2
 
