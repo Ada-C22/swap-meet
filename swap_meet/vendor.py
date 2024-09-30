@@ -1,7 +1,7 @@
 class Vendor:
     #create attributes name inventory which is empty list []
-    def __init__(self, inventory):
-        inventory = [] if inventory is None else inventory
+    def __init__(self, inventory=None):
+        self.inventory = [] if inventory is None else inventory
         
     def add(self, item):
         self.inventory.append(item)
@@ -12,4 +12,14 @@ class Vendor:
             self.inventory.remove(item)  
             return item
         else:
-            return False      
+            return False
+          
+    def get_by_id(self, id):
+        '''
+        iventory = [ Item(), Item()]
+        where Item has id
+        '''
+        for item in self.inventory:
+            if id == item.id:
+                return item
+        return None
