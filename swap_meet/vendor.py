@@ -15,8 +15,6 @@ class Vendor:
             return item_to_remove
 
     def get_by_id(self, item_id):
-        #from inventory list retreive item that is same as item_id provided
         for item in self.inventory:
-            if item.id == item_id: # Compare id from Item class with item_id
+            if item.id == item_id:
                 return item
-        
