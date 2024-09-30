@@ -15,7 +15,8 @@ class Vendor:
     
     def remove(self, item, inventory):
         
-        for item in inventory:
-            if self.item in inventory:
-                
-                
+        if self.item in inventory:
+            inventory.remove(item)
+
+        return item if item in inventory else False  
+
