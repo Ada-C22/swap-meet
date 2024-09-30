@@ -1,2 +1,3 @@
 class Vendor:
-    pass
+    def __init__(self, inventory=None):
+        pass
