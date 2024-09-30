@@ -1,4 +1,4 @@
-# Testing github connection
+# Testing github connections
 
 # Swap Meet
 
