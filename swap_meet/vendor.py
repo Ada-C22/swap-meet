@@ -14,3 +14,23 @@ class Vendor:
             self.inventory.remove(item)
             return item
         
+    def get_by_id(self, id):
+        if id in self.inventory:
+            return self.item
+        else:
+            return None
+    
+    def swap_items(self,):
+        pass
+
+    def swap_first_item(self, ):
+        pass
+
+    def get_by_category(self, ):
+        pass
+
+    def get_best_by_category(self, ):
+        pass
+
+    def swap_best_by_categorty(self, ):
+        pass
