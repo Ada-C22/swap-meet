@@ -29,9 +29,9 @@ For this project, there are tests that you must complete for Waves 01, 03, and 0
 
 ## Integration Tests
 
-We provided **integration tests** for this project. The integration tests provided in this project do not cover all the test cases verified by the unit tests. While unit tests are small, fast, and should cover most of our program's behavior down to individual functions, integration tests verify that the various pieces of a program are working together correctly. For this project, the integration tests mainly verify that the functions work together when invoked correctly. We could classify them as the subset of Integration Tests called *Smoke Tests*, tests that check basic functionality of the application.
+We provided **integration tests** for this project. The integration tests provided in this project do not cover all the test cases verified by the unit tests. While unit tests are small, fast, and should cover most of our program's behavior down to individual functions, integration tests verify that the various pieces of a program are working together correctly. For this project, the integration tests mainly verify that the functions work together when invoked correctly. We could classify them as the subset of Integration Tests called _Smoke Tests_, tests that check basic functionality of the application.
 
-The integration tests for this project are in the directory `tests/integration_tests`, and the tests have the decorator `@pytest.mark.integration_test` provided by the `pytest-integration` package. Marking these tests as integration tests makes them run after the unit tests. The isolated nature and specficity of *unit tests* make them a much better tool for debugging. Hence, we want to run the unit tests before the integration tests.
+The integration tests for this project are in the directory `tests/integration_tests`, and the tests have the decorator `@pytest.mark.integration_test` provided by the `pytest-integration` package. Marking these tests as integration tests makes them run after the unit tests. The isolated nature and specficity of _unit tests_ make them a much better tool for debugging. Hence, we want to run the unit tests before the integration tests.
 
 For more on different types of software testing, [here is a helpful resource](https://www.atlassian.com/continuous-delivery/software-testing/types-of-software-testing).
 
@@ -45,7 +45,7 @@ Review the [code coverage exercise](https://github.com/adaGold/code-coverage-exe
 
 `pytest --cov=swap_meet --cov-report html --cov-report term`
 
-*Note: Code coverage is disabled for integration tests, since unit tests should cover all the code.* [source](https://pypi.org/project/pytest-integration/#:~:text=Overview,integration%20tests%20are%20not%20run)
+_Note: Code coverage is disabled for integration tests, since unit tests should cover all the code._ [source](https://pypi.org/project/pytest-integration/#:~:text=Overview,integration%20tests%20are%20not%20run)
 
 ## Project Directions
 
@@ -63,7 +63,6 @@ In Wave 1 we will create the `Vendor` class.
 - Inside this module, there is a class named `Vendor`
 - Each `Vendor` will have an attribute named `inventory`, which is an empty list by default
 - When we instantiate an instance of `Vendor`, we can optionally pass in a list with the keyword argument `inventory`
-
 
 - Every instance of `Vendor` has an instance method named `add`, which takes in one item
 - This method adds the item to the `inventory`
@@ -83,7 +82,7 @@ In Wave 2 we will create the `Item` class and the `Vendor` class' `get_by_id` me
 - Inside this module, there is a class named `Item`
 - Each `Item` will have an attribute named `id`, which is a unique integer by default
   - There are many ways to generate numbers, but generating numbers without duplicates takes some care. Happily, Python has a package called `uuid` that can help!
-    - If we import the [`uuid` package](https://docs.python.org/3/library/uuid.html) in `item.py`, with a little research we can use one of the functions `uuid` provides to create large ***unique*** numbers meant to be used as identifiers
+    - If we import the [`uuid` package](https://docs.python.org/3/library/uuid.html) in `item.py`, with a little research we can use one of the functions `uuid` provides to create large **_unique_** numbers meant to be used as identifiers
     - Specifically, you'll need to choose which of the `uuid` package's functions to use, so be sure to consider which function will work best for creating a unique integer
     - Note that this package's functions return `UUID` objects, not integers as such, **but** `UUID` objects have [an attribute `int`](https://docs.python.org/3/library/uuid.html#uuid.UUID.int) which allow us to access their value as an integer
 - When we initialize an instance of `Item`, we can optionally pass in an integer with the keyword argument `id` to manually set the `Item`'s `id`
@@ -132,6 +131,7 @@ In Wave 4 we will write one method, `swap_first_item`.
 In Wave 5 we will create three additional modules with three additional classes.
 
 Our new modules should be defined as follows:
+
 - `Clothing`
   - Has an attribute `id` that is by default a unique integer
   - Has an attribute `fabric` that is by default the string "Unknown"
@@ -149,6 +149,7 @@ Our new modules should be defined as follows:
   - Has a stringify method that returns `"An object of type Decor with id <id value>. It takes up a <width value> by <length value> sized space."`
     - For example, if we had a `Decor` instance with an `id` of `123435`, `width` of `3`, and `length` of `7`, its stringify method should return `"An object of type Decor with id 12345. It takes up a 3 by 7 sized space."`
 - `Electronics`
+
   - Has an attribute `id` that is by default a unique integer
   - Has an attribute `type` that is by default the string "Unknown"
     - This attribute describes what kind of electronic device this is. Some example values might be `“Kitchen Appliance”`, `“Game Console”`, or `“Health Tracker”`
@@ -180,6 +181,7 @@ from swap_meet.item import Item
 In Wave 6 we will write three methods, `get_by_category`, `get_best_by_category`, and `swap_best_by_category`.
 
 - `Vendor` objects have an instance method named `get_by_category`
+
   - This method takes one argument: a string, representing a category
   - This method returns a list of objects in the inventory with that category
   - If there are no items in the `inventory` that match the category argument, the method returns an empty list
@@ -214,11 +216,13 @@ Try it out and see if the tests still pass! If you can't get them to pass with t
 Should a project be completed before submission, and there is a desire for optional enhancements, consider this idea:
 
 - `Item`s have age
+
   - Add an `age` attribute to all `Item`s
   - Implement a `Vendor` method named `swap_by_newest`, using any logic that seems appropriate
   - Write unit tests for `swap_by_newest`
 
 - Take a look for error handling opportunities
+
   - What issues could arise if we pass a string (or any object other than an integer) for the `id` of an Item? How could we prevent that?
   - What other opportunities for error handling do you see?
 
