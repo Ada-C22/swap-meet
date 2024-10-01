@@ -15,9 +15,9 @@ class Vendor:
         self.inventory.remove(item)
         return item
     
-    def get_by_id(self, int=None):
+    def get_by_id(self, num=None):
         for item in self.inventory:
-            if item.id == int:
+            if item.id == num:
                 return item
         return None
 
@@ -35,9 +35,7 @@ class Vendor:
         if not self.inventory or not other_vendor.inventory:
             return False
 
-        temp = self.inventory[0]
-        self.inventory[0] = other_vendor.inventory[0]
-        other_vendor.inventory[0] = temp
+        self.swap_items(other_vendor, self.inventory[0], other_vendor.inventory[0])
 
         return True
 
