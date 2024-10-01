@@ -1,18 +1,16 @@
-import uuid
+from item import Item
 
-class Clothing:
-    def __init__(self, id=None, fabric="Unknow",condition=0):
-        if id is None:
-            self. id = int(uuid.uuid4())
-        else:
-            self.id = id
-            
+class Clothing(Item):
+    def __init__(self, id=None, fabric = "Unknown"):
+        super().__init__(id=None) # parent class Item id
         self.fabric = fabric
-        self.condition = condition
-        
-    def get_category(self):
-        return self.__class__.__name__
     
+    # inherits Item method get_category
+
+    # overrides Item method str
     def __str__(self):
-        return f"An object of type Clothing with id {self.id}. \
-            It is made from {self.fabric} fabric."
+        return f"An object of type {self.get_category()} with id {self.id}. It is made from {self.fabric} fabric."
+    
+x = Clothing()
+print(str(x))
+    
