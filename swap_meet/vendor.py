@@ -1,3 +1,5 @@
+# from .item import Item
+
 class Vendor:
     def __init__(self, inventory=None):
         inventory = [] if not inventory else inventory
@@ -13,6 +15,18 @@ class Vendor:
         else:
             self.inventory.remove(item)
             return item
+        
+    def get_by_id(self, id_num):
+        for item in self.inventory:
+            if item.id == id_num:
+                return item
+            
+        return None
+        
+        # if not self.id_num:
+        #     return None
+        # self.id_num = self.id
+        # return self.id_num
         
     
        
