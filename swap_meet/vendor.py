@@ -1,4 +1,3 @@
-#
 
 class Vendor:
     def __init__(self, inventory = None):
@@ -13,15 +12,26 @@ class Vendor:
         return item
 
     
-        
+    def remove(self, item):
+         
+        if item not in self.inventory:
+            return False
     
-    def remove(self, item, inventory):
-        new_inventory = list(inventory)
+        else:
+            self.inventory.remove(item)
 
-        # Note: Is it okay to remove 
+        return item
+
+    def get_by_id(self, vendor_id):
         
-        if self.item in self.inventory:
-            inventory.remove(self.item)
-
-        return self.item if self.item in self.inventory else False  
-
+        # return Item object inside the inventory list
+        # whose id matches the vendor id
+        for item in self.inventory:
+            if vendor_id == item.id:
+                return item
+            
+        return None
+                
+        
+        
+        #return None if item_id not in self.inventory else item_id
