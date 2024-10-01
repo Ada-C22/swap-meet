@@ -7,7 +7,6 @@ class Item:
             self.id = int(uuid.uuid4())
         else:
             self.id = id
-            
         self.condition = condition
         
     def get_category(self):
