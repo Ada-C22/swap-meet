@@ -8,10 +8,3 @@ class Item:
 
     def get_category(self):
         return self.name
-
-    # def get_by_id(self, id):
-    #     inventory = Vendor.inventory
-
-    #     if id not in inventory:
-    #         return None
-    #     return Vendor.id
