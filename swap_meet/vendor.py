@@ -1,8 +1,7 @@
 from swap_meet.item import Item
 class Vendor:
     def __init__(self, inventory=None):
-        inventory = [] if inventory is None else inventory
-        self.inventory = inventory
+        self.inventory = inventory or []
     
     def add(self, item):
         self.inventory.append(item)
