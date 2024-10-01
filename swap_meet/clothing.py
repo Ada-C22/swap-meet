@@ -1,2 +1,0 @@
-class Clothing:
-    pass
