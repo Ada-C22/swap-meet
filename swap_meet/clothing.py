@@ -1,2 +1,2 @@
-class clothing:
+class Clothing:
     pass
