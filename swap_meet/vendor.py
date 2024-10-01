@@ -20,7 +20,6 @@ class Vendor:
     
     def get_by_id(self,item_id):
         for item in self.inventory: 
-            item = Item(item)
             if item.id == item_id:
                 return item
         return None
