@@ -22,17 +22,6 @@ class Vendor:
                 return item
         return None
     
-<<<<<<< HEAD
-    def swap_items(self, other_vendor, my_item, their_item):
-        self.inventory.remove(my_item)
-        other_vendor.add(my_item)
-        other_vendor.remove(their_item)
-        self.inventory.add(their_item)
-        return True 
-    
-    
-
-=======
     def swap_items(self, other_vendor, my_item, thier_item):
         my_item_exists = self.get_by_id(my_item.id)
         thier_item_exists = other_vendor.get_by_id(thier_item.id)
@@ -44,4 +33,16 @@ class Vendor:
             return True
         else:
             return False
->>>>>>> 751db786d33ae3016ee4be8709d3fbe57cfc7628
+        
+    def swap_first_item(self, other_vendor):
+        try:
+            my_first_item = self.inventory[0]
+            thier_first_item = other_vendor.inventory[0]
+        except IndexError:
+            return False 
+        self.remove(my_first_item)
+        other_vendor.add(my_first_item)
+        other_vendor.remove(thier_first_item)
+        self.add(thier_first_item)
+        return True
+        
