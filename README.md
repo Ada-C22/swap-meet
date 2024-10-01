@@ -94,6 +94,26 @@ In Wave 2 we will create the `Item` class and the `Vendor` class' `get_by_id` me
   - This method returns the item with a matching `id` from the inventory
   - If there is no matching item in the `inventory`, the method should explicitly return `None`
 
+### Wave 3
+
+In Wave 3 we will write a method to stringify (convert to a string) an `Item` using `str()` and write the method `swap_items`.
+
+- When we stringify an instance of `Item` using `str()`, it returns `"An object of type Item with id <id value>."`, where `<id value>` is the `id` of the `Item` instance that `str()` was called on.
+  - For example, if we had an `Item` instance `item_a = Item(id=12345)`, the output of `str(item_a)` should be `"An object of type Item with id 12345."`.
+  - To accomplish this, you'll want to investigate what calling `str()` on a class instance does and how you can override such a method. This type of overriding is known as "operator overloading", put simply, it means that the same method exhibits different behavior across instances of different classes. A simple example would be something like `+` which for strings means "concatenate" but for numbers, means "add", or for lists, means "combine".
+
+The remaining tests in wave 3 imply:
+
+- Instances of `Vendor` have an instance method named `swap_items`
+  - It takes 3 arguments:
+  - `swap_items` takes 3 arguments:
+    1. an instance of another `Vendor` (`other_vendor`), representing the friend that the vendor is swapping with
+    2. an instance of an `Item` (`my_item`), representing the item this `Vendor` instance plans to give
+    3. an instance of an `Item` (`their_item`), representing the item the friend `Vendor` plans to give
+  - The method removes `my_item` from this `Vendor`'s inventory, and adds it to the friend's inventory
+  - The method removes `their_item` from the other `Vendor`'s inventory, and adds it to this `Vendor`'s inventory
+  - The method returns `True`
+  - If this `Vendor`'s inventory doesn't contain `my_item` or the friend's inventory doesn't contain `their_item`, the method returns `False`
 
 
 ### Wave 4
