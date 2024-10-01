@@ -16,10 +16,9 @@ class Item:
         '''
         `item_a = Item(id=12345)`, 
         the output of `str(item_a):
-        should be `"An object of type Item with id 12345."`'''
-       
+        should be `"An object of type Item with id 12345."`
+        '''
         return f"An object of type {self.get_category()} with id {self.id}."
-    
     
 item_a = Item(id=12345)
 
