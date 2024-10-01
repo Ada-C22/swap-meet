@@ -21,3 +21,13 @@ class Vendor:
                 return item
         return None
 
+    def swap_items(self, other_vendor, my_item, their_item):
+        if self.get_by_id(my_item.id) not in self.inventory or other_vendor.get_by_id(their_item.id) not in other_vendor.inventory:
+            return False
+        
+        self.remove(my_item)
+        other_vendor.add(my_item)
+        other_vendor.remove(their_item)
+        self.add(their_item)
+        return True
+
