@@ -48,6 +48,7 @@ def test_removing_not_found_is_false():
     )
 
     result = vendor.remove(item)
+    vendor_length = len(vendor.inventory)
     
     assert result == "c"
 
