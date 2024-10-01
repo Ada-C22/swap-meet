@@ -1,6 +1,3 @@
-
-        
-
 class Vendor:
     def __init__(self, inventory=None):
         inventory = [] if inventory is None else inventory
@@ -18,18 +15,19 @@ class Vendor:
             return item
         
     def get_by_id(self, id):
-        if id in self.inventory:
-            return self.item
-        else:
-            return None
-    
+        for item in self.inventory:
+            if item.id == id:
+                return item
+            
+        return None
+
     def swap_items(self,):
         pass
 
-    def swap_first_item(self, ):
+    def swap_first_item(self,):
         pass
 
-    def get_by_category(self, ):
+    def get_by_category(self,):
         pass
 
     def get_best_by_category(self, ):
