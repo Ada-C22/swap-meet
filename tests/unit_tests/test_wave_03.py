@@ -12,7 +12,7 @@ def test_item_overrides_to_string():
     expected_result = f"An object of type Item with id {test_id}."
     assert item_as_string == expected_result
 
-@pytest.mark.skip
+# @pytest.mark.skip
 def test_swap_items_returns_true():
     item_a = Item()
     item_b = Item()
@@ -114,7 +114,7 @@ def test_swap_items_from_my_empty_returns_false():
     assert len(jolie.inventory) == 2
     assert not result
 
-@pytest.mark.skip
+# @pytest.mark.skip
 def test_swap_items_from_their_empty_returns_false():
     item_a = Item()
     item_b = Item()
@@ -131,7 +131,8 @@ def test_swap_items_from_their_empty_returns_false():
 
     result = fatimah.swap_items(jolie, item_b, nobodys_item)
 
-    raise Exception("Complete this test according to comments below.")
+    # raise Exception("Complete this test according to comments below.")
     # *********************************************************************
     # ****** Complete Assert Portion of this test **********
+    assert result == False
     # *********************************************************************
