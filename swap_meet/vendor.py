@@ -19,8 +19,7 @@ class Vendor:
     
         else:
             self.inventory.remove(item)
-
-        return item
+            return item
 
     def get_by_id(self, vendor_id):
         
@@ -33,5 +32,22 @@ class Vendor:
         return None
                 
         
+    def swap_items(self, other_vendor, my_item, their_item):
+        my_item_remove = self.remove(my_item)
+        their_item_remove = self.remove(their_item)
+
+        if not my_item_remove or not their_item_remove:
+            return False
         
-        #return None if item_id not in self.inventory else item_id
+        elif my_item_remove == my_item and their_item_remove == their_item:
+            self.add(their_item)
+            other_vendor.add(my_item)
+
+    def new_method(self, their_item):
+        self.add(their_item)
+
+
+
+        
+
+

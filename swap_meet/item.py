@@ -1,4 +1,4 @@
-import uuid
+# import uuid
 import random
 
 class Item:
@@ -13,6 +13,11 @@ class Item:
             # If id is an integer, use it as is
             self.id = id
     
+    def __str__(self):
+        return f"An object of type Item with id {self.id}."
+    
     # try dunder name class method
     def get_category(self):
         return "Item"
+    
+    
