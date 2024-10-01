@@ -2,7 +2,7 @@ import pytest
 from swap_meet.vendor import Vendor
 from swap_meet.item import Item
 
-#3@pytest.mark.skip
+#@pytest.mark.skip
 def test_items_have_default_uuid_length_id():
     item = Item()
     assert isinstance(item.id, int)
@@ -36,7 +36,7 @@ def test_get_item_by_id():
     result_item = vendor.get_by_id(test_id)
     assert result_item is item_custom_id
 
-# @pytest.mark.skip
+#@pytest.mark.skip
 def test_get_item_by_id_no_matching():
     test_id = 12345
     item_a = Item()
