@@ -8,8 +8,8 @@ class Item:
     def get_category(self):
         return self.name
     
-    def str(self):
-        print ("An object of Type Item with id {self.id}")
+    def __str__(self):
+        return f"An object of type Item with id {self.id}."
 
     # def get_by_id(self, id):
     #     inventory = Vendor.inventory
