@@ -1,13 +1,14 @@
 import uuid
 
 class Decor:
-    def __init__(self, id=None, type="Unknow", condition=0):
+    def __init__(self, id=None, width=0, length=0, condition=0):
         if id is None:
             self.id = int(uuid.uuid4())
         else:
             self.id = id
             
-        self.type = type
+        self.width = width
+        self.length = length
         self.condition=condition
         
     def get_category(self):

@@ -9,6 +9,7 @@ class Clothing:
             
         self.fabric = fabric
         self.condition = condition
+        
     def get_category(self):
         return self.__class__.__name__
     

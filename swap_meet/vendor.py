@@ -1,7 +1,10 @@
 class Vendor:
     # wave 1
     def __init__(self, inventory=None):
-        self.inventory = [] if inventory is None else inventory
+        if inventory is None:
+            self.inventory = [] 
+        else:
+            self.inventory = inventory
         
     def add(self, item):
         self.inventory.append(item)
@@ -29,6 +32,7 @@ class Vendor:
         if my_item in self.inventory and their_item in other_vendor.inventory:
             self.remove(my_item)
             other_vendor.add(my_item)
+            
             other_vendor.remove(their_item)
             self.add(their_item)
             return True
