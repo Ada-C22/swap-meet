@@ -34,9 +34,8 @@ class Vendor:
         best_condition = 0.0
         best_in_category = None
         for item in items_in_category:
-            item_condition = self.condition()
-            if item_condition > best_condition:
-                best_condition = item_condition
+            if item.condition > best_condition:
+                best_condition = item.condition
                 best_in_category = item
         return best_in_category
     
