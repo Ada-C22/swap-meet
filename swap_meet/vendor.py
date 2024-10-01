@@ -2,6 +2,7 @@ class Vendor:
     def __init__(self, inventory=None):
 
         self.inventory = [] if inventory is None else inventory
+        
 
     def add(self, new_item_added):
         self.inventory.append(new_item_added)
@@ -38,3 +39,5 @@ class Vendor:
             self.swap_helper(other_vendor, my_first_item, their_first_item)
             return True
         return False
+
+    
