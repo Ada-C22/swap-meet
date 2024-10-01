@@ -1,4 +1,4 @@
-from swap_meet.item import Item
+from .item import Item
 class Vendor:
     def __init__(self, inventory=None):
         self.inventory = inventory or []
@@ -24,10 +24,11 @@ class Vendor:
         if my_item not in self.inventory or their_item not in other_vendor.inventory:
             return False
         
-        self.remove(my_item)
         other_vendor.add(my_item)
-        other_vendor.remove(their_item)
         self.add(their_item)
+        other_vendor.remove(their_item)
+        self.remove(my_item)
+        
         return True
     
     def swap_first_item(self, other_vendor):
@@ -38,3 +39,47 @@ class Vendor:
 
         return True
 
+    def get_by_category(self, category):
+
+        items = [item for item in self.inventory if item.get_category() == category]
+        return items
+    
+    def get_best_by_category(self, category):
+
+        items = self.get_by_category(category)
+
+        if not items:
+            return None
+        
+        best_item = items[0]
+        for item in items[1:]:
+            if item.condition > best_item.condition:
+                best_item = item
+    
+        return best_item
+            
+    def swap_best_by_category(self, other_vendor, my_priority, their_priority):
+
+        best_from_other = other_vendor.get_best_by_category(my_priority)
+        best_from_self = self.get_best_by_category(their_priority)
+        
+        return self.swap_items(other_vendor, best_from_self, best_from_other)
+    
+    def find_minimum_age(self, iterable):
+        if not iterable:
+            return None
+        min_age = iterable[0].age
+        for item in iterable[1:]:
+            if item.age < min_age:
+                min_age = item.age
+
+        return min_age
+    
+    def swap_by_newest(self, other_vendor):
+        my_new_item = self.find_minimum_age(self.inventory)
+        their_new_item = self.find_minimum_age(other_vendor.inventory)
+
+        if not my_new_item or not their_new_item:
+            return False
+        
+        return self.swap_items(self, other_vendor, my_new_item, their_new_item)
