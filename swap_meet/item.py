@@ -13,7 +13,6 @@ class Item:
     def __str__(self):
         return f"An object of type Item with id {self.id}."
     
-    # try dunder name class method
     def get_category(self):
         return "Item"
     

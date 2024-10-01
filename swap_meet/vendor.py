@@ -33,18 +33,18 @@ class Vendor:
                 
         
     def swap_items(self, other_vendor, my_item, their_item):
-        my_item_remove = self.remove(my_item)
-        their_item_remove = self.remove(their_item)
 
-        if not my_item_remove or not their_item_remove:
+        if my_item not in self.inventory or their_item not in other_vendor.inventory:
             return False
         
-        elif my_item_remove == my_item and their_item_remove == their_item:
-            self.add(their_item)
-            other_vendor.add(my_item)
-
-    def new_method(self, their_item):
+        # Transactions
+        self.remove(my_item)
+        other_vendor.remove(their_item)
         self.add(their_item)
+        other_vendor.add(my_item)
+        return True
+
+
 
 
 
