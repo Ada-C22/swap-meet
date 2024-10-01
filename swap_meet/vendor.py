@@ -22,6 +22,24 @@ class Vendor:
                 return item
         return None
     
+    def get_by_category(self, category):
+        items_in_category = []
+        for item in self.inventory:
+            if item.get_category() == category:
+                items_in_category.append(item) 
+        return items_in_category
+    
+    def get_best_by_category(self, category):
+        items_in_category = self.get_by_category(category)
+        best_condition = 0.0
+        best_in_category = None
+        for item in items_in_category:
+            item_condition = self.condition()
+            if item_condition > best_condition:
+                best_condition = item_condition
+                best_in_category = item
+        return best_in_category
+    
     def swap_items(self, other_vendor, my_item, thier_item):
         my_item_exists = self.get_by_id(my_item.id)
         thier_item_exists = other_vendor.get_by_id(thier_item.id)
