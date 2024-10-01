@@ -7,5 +7,5 @@ class Item:
         return f"An object of type {self.get_category()} with id {self.id}."
 
     def get_category(self):
-        return "Item"
+        return type(self).__name__
     
