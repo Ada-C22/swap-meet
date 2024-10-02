@@ -30,11 +30,12 @@ class Vendor:
     # wave 3
     def swap_items(self, other_vendor, my_item, their_item):
         if my_item in self.inventory and their_item in other_vendor.inventory:
-            self.remove(my_item)
-            other_vendor.add(my_item)
+            #look through Vendor's inventory and find where my_item is located and return its index
+            my_item_index = self.inventory.index(my_item)
+            self.inventory[my_item_index] = their_item
             
-            other_vendor.remove(their_item)
-            self.add(their_item)
+            their_item_index = other_vendor.inventory.index(their_item)
+            other_vendor.inventory[their_item_index] = my_item
             return True
         else:
             return False
@@ -46,6 +47,7 @@ class Vendor:
         
         my_first_item = self.inventory[0]
         their_first_item = other_vendor.inventory[0]
+        
         self.swap_items(other_vendor, my_first_item, their_first_item)
 
         return True
