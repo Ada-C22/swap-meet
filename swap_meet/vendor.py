@@ -65,21 +65,21 @@ class Vendor:
         
         return self.swap_items(other_vendor, best_from_self, best_from_other)
     
-    def find_minimum_age(self, iterable):
+    def find_newest_item(self, iterable):
         if not iterable:
             return None
-        min_age = iterable[0].age
+        newest_item = iterable[0]
         for item in iterable[1:]:
-            if item.age < min_age:
-                min_age = item.age
+            if item.age < newest_item.age:
+                newest_item = item
 
-        return min_age
+        return newest_item
     
     def swap_by_newest(self, other_vendor):
-        my_new_item = self.find_minimum_age(self.inventory)
-        their_new_item = self.find_minimum_age(other_vendor.inventory)
+        my_new_item = self.find_newest_item(self.inventory)
+        their_new_item = self.find_newest_item(other_vendor.inventory)
 
         if not my_new_item or not their_new_item:
             return False
         
-        return self.swap_items(self, other_vendor, my_new_item, their_new_item)
+        return self.swap_items(other_vendor, my_new_item, their_new_item)
