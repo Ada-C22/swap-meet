@@ -57,12 +57,17 @@ class Vendor:
         first_item_in_my_inventory = self.inventory[0]
         first_item_in_vendor_inventory = other_vendor.inventory[0]
         
-        swap_item = Vendor.swap_items(self, other_vendor, first_item_in_my_inventory, first_item_in_vendor_inventory)
-        print(self.inventory)
-        print(other_vendor.inventory)
+        # swap_item = Vendor.swap_items(self, other_vendor, first_item_in_my_inventory, first_item_in_vendor_inventory)
+        # print(self.inventory)
+        # print(other_vendor.inventory)
+
+        self.inventory[0] = first_item_in_vendor_inventory
+        other_vendor.inventory[0] = first_item_in_my_inventory
+        
         return True
 
-mine = Vendor(inventory=["item_x", "item_y", "item_z"])
-fatimah = Vendor(inventory=["item_a", "item_b", "item_c"])
 
-print(mine.swap_first_item(fatimah))
+# mine = Vendor(inventory=["item_x", "item_y", "item_z"])
+# fatimah = Vendor(inventory=["item_a", "item_b", "item_c"])
+
+# print(mine.swap_first_item(fatimah))
