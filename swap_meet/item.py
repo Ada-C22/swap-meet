@@ -8,9 +8,10 @@ class Item:
 
     def get_category(self):
         return "Item"
+        #can refactor to return the name of the class if time allows 
     
     def __str__(self):
-        return f"An object of type Item with id {self.id}."
+        return f"An object of type {self.get_category()} with id {self.id}."
     
     def condition_description(self):
         if self.condition == 5:
@@ -26,6 +27,5 @@ class Item:
         elif self.condition == 0:
             return "Ewwww"
         
-#item = Item(condition=5)
-#print(item.condition_description())
+
         

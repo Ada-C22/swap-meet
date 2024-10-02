@@ -1,29 +1,14 @@
-import uuid
+from .item import Item
 
-
-class Clothing:
+class Clothing(Item):
     
-    def __init__(self, id=None, fabric="Unknown", condition=0 ): 
-        self.id = uuid.uuid4().int if id is None else id
+    def __init__(self, id=None,condition=0, fabric="Unknown"): 
+        super().__init__(id, condition)
         self.fabric = fabric
-        self.condition = condition
-
+        
     def get_category(self):
         return "Clothing"
     
     def __str__(self):
-        return f"An object of type Clothing with id {self.id}. It is made from {self.fabric} fabric."
-    
-    def condition_description(self):
-        if self.condition == 5:
-            return "Brand new"
-        elif self.condition == 4:
-            return "Somewhat brand new"
-        elif self.condition == 3:
-            return "Used but not bad"
-        elif self.condition == 2:
-            return "Used"
-        elif self.condition == 1:
-            return "Really used"
-        elif self.condition == 0:
-            return "Ewwww"
+        return f"An object of type {self.get_category()} with id {self.id}. It is made from {self.fabric} fabric."
+       

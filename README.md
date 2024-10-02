@@ -94,7 +94,7 @@ In Wave 2 we will create the `Item` class and the `Vendor` class' `get_by_id` me
   - This method returns the item with a matching `id` from the inventory
   - If there is no matching item in the `inventory`, the method should explicitly return `None`
 
-### Wave 3
+### Wave 3d
 
 In Wave 3 we will write a method to stringify (convert to a string) an `Item` using `str()` and write the method `swap_items`.
 

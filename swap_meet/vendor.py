@@ -39,6 +39,19 @@ class Vendor:
                 best_in_category = item
         return best_in_category
     
+    def swap_best_by_category(self, other_vendor, my_priority, their_priority):
+        best_item_my_priority = other_vendor.get_best_by_category(my_priority)
+        best_item_their_priority = self.get_best_by_category(their_priority)
+        if best_item_my_priority and best_item_their_priority:
+            self.remove(best_item_their_priority)
+            other_vendor.add(best_item_their_priority)
+            other_vendor.remove(best_item_my_priority)
+            self.add(best_item_my_priority)
+            return True
+        else:
+            return False
+
+
     def swap_items(self, other_vendor, my_item, thier_item):
         my_item_exists = self.get_by_id(my_item.id)
         thier_item_exists = other_vendor.get_by_id(thier_item.id)
