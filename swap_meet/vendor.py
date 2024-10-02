@@ -63,6 +63,15 @@ class Vendor:
 
             return best_item
 
+<<<<<<< HEAD
+def swap_best_by_category(self, other_vendor, my_priority, their_priority):
+    my_best_item = self.get_best_by_category(their_priority)
+    their_best_item = other_vendor.get_best_by_category(my_priority)
+
+    if my_best_item in  and their_best_item in other_vendor:
+        self.swap_items(other_vendor, my_best_item, their_best_item)
+        return True
+=======
     def swap_best_by_category(self, other_vendor, my_priority, their_priority):
         my_best_item = self.get_best_by_category(their_priority)
         their_best_item = other_vendor.get_best_by_category(my_priority)
@@ -70,6 +79,7 @@ class Vendor:
         if my_best_item and their_best_item:
             self.swap_items(other_vendor, my_best_item, their_best_item)
             return True
+>>>>>>> d2240495f9c9d388f78bb5de1ed63913c6c091b9
 
         return False
 
