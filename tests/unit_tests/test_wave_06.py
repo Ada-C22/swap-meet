@@ -111,6 +111,8 @@ def test_swap_best_by_category():
         their_priority="Decor"
     )
 
+    assert my_best
+
     raise Exception("Complete this test according to comments below.")
     # *********************************************************************
     # ****** Complete Assert Portion of this test **********
