@@ -1,7 +1,7 @@
 import uuid 
 
 class Item:
-    def __init__(self, id=None, condition=None):
+    def __init__(self, id=None, condition=None, age=0):
         self.id = id if id is not None else uuid.uuid4().int
         self.condition = condition if condition is not None else 0
 
