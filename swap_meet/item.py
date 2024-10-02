@@ -1,8 +1,15 @@
-class Item:
-    def __init__(self):
-        pass
+import uuid
 
-    def get_category(self):
-        pass
+class Item:
+    def __init__(self, id=None):
+        if id is None:
+            self.id = uuid.uuid4().int 
+        else:
+            self.id = id
+
+    def get_category(self, category=""):
+        self.category = category
+        return "Item"
+
     def __str__(self):
-        pass
+        return f"An object of type {self.get_category()} with id {self.id}."
