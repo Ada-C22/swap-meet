@@ -48,4 +48,3 @@ def test_integration_wave_01_02_03():
     assert item2 in other_vendor.inventory
     assert item3 in vendor.inventory
 
-
