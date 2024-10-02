@@ -3,7 +3,7 @@ from swap_meet.vendor import Vendor
 from swap_meet.item import Item
 
 #@pytest.mark.skip
-def test_swap_items_returns_true():
+def test_swap_items_by_newest_items_returns_true():
     item_a = Item(age=13)
     item_b = Item(age=2)
     item_c = Item(age=24)
@@ -30,32 +30,32 @@ def test_swap_items_returns_true():
     assert item_b in jolie.inventory
     assert result
 
-@pytest.mark.skip
-def test_swap_items_when_my_item_is_missing_returns_false():
-    item_a = Item()
-    item_b = Item()
-    item_c = Item()
+#@pytest.mark.skip
+def test_swap_items_when_my_items_age_is_missing_returns_false():
+    item_a = Item(age=50)
+    item_b = Item(age=14)
+    item_c = Item(age=8)
     fatimah = Vendor(
         inventory=[item_a, item_b, item_c]
     )
 
-    item_d = Item()
-    item_e = Item()
+    item_d = Item(age=34)
+    item_e = Item(age=0)
     jolie = Vendor(
         inventory=[item_d, item_e]
     )
 
-    result = fatimah.swap_items(jolie, item_e, item_d)
+    result = fatimah.swap_by_newest(jolie)
 
     assert len(fatimah.inventory) == 3
-    assert item_d not in fatimah.inventory
-    assert item_a in fatimah.inventory
+    assert item_c not in fatimah.inventory
+    assert item_e in fatimah.inventory
     assert item_b in fatimah.inventory
-    assert item_c in fatimah.inventory
+    assert item_a in fatimah.inventory
     assert len(jolie.inventory) == 2
     assert item_d in jolie.inventory
-    assert item_e in jolie.inventory
-    assert not result
+    assert item_e not in jolie.inventory
+    assert result
 
 @pytest.mark.skip
 def test_swap_items_when_their_item_is_missing_returns_false():
@@ -72,7 +72,7 @@ def test_swap_items_when_their_item_is_missing_returns_false():
         inventory=[item_d, item_e]
     )
 
-    result = fatimah.swap_items(jolie, item_b, item_c)
+    result = fatimah.fatimah.swap_by_newest(jolie)
 
     assert len(fatimah.inventory) == 3
     assert item_d not in fatimah.inventory
@@ -98,7 +98,7 @@ def test_swap_items_from_my_empty_returns_false():
 
     nobodys_item = Item()
 
-    result = fatimah.swap_items(jolie, nobodys_item, item_d)
+    result = fatimah.fatimah.swap_by_newest(jolie)
 
     assert len(fatimah.inventory) == 0
     assert len(jolie.inventory) == 2
