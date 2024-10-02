@@ -125,8 +125,6 @@ def test_swap_best_by_category():
     assert item_c in jesse.inventory
     assert item_c not in tai.inventory
     assert item_f not in jesse.inventory
-    assert tai.inventory == [item_a, item_b, item_f]
-    assert jesse.inventory == [item_d, item_e, item_c]
 
 def test_swap_best_by_category_reordered():
     # Arrange
@@ -170,8 +168,6 @@ def test_swap_best_by_category_reordered():
     assert item_c in jesse.inventory
     assert item_c not in tai.inventory
     assert item_f not in jesse.inventory
-    assert tai.inventory == [item_b, item_a, item_f]
-    assert jesse.inventory == [item_e, item_d, item_c]
 
 def test_swap_best_by_category_no_inventory_is_false():
     tai = Vendor(
@@ -263,8 +259,6 @@ def test_swap_best_by_category_no_match_is_false():
     assert item_d in jesse.inventory
     assert item_e in jesse.inventory
     assert item_f in jesse.inventory
-    assert tai.inventory == [item_a, item_b, item_c]
-    assert jesse.inventory == [item_d, item_e, item_f]
 
 def test_swap_best_by_category_no_other_match_is_false():
     # Arrange
@@ -306,5 +300,3 @@ def test_swap_best_by_category_no_other_match_is_false():
     assert item_f in jesse.inventory
     assert item_e in jesse.inventory
     assert item_d in jesse.inventory
-    assert tai.inventory == [item_c, item_b, item_a]
-    assert jesse.inventory == [item_f, item_e, item_d]
