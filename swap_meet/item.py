@@ -1,9 +1,10 @@
 import uuid 
 
 class Item:
-    def __init__(self, id=None, condition=None, age=0):
+    def __init__(self, id=None, condition=None, age= None):
         self.id = id if id is not None else uuid.uuid4().int
         self.condition = condition if condition is not None else 0
+        self.age = age if age else None
 
     def get_category(self):
         return self.__class__.__name__
@@ -25,3 +26,5 @@ class Item:
         if self.condition >= 4 and self.condition < 5:
             return "Almost like new!"
         return "Mint condition."
+
+

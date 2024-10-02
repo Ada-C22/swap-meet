@@ -75,3 +75,27 @@ class Vendor:
         
         self.swap_items(other_vendor,vendor_best_item,other_vendor_best_item)
         return True
+    
+    def swap_by_newest(self, other_vendor):
+        my_newest_item_age = float("inf")
+        their_newest_item_age = float("inf")
+        my_newest_item = None
+        their_newest_item = None
+
+        # Find the newest item in self's inventory
+        for item in self.inventory:
+            if item.age < my_newest_item_age:
+                my_newest_item_age = item.age
+                my_newest_item = item
+
+        # Find the newest item in the other vendor's inventory
+        for item in other_vendor.inventory:
+            if item.age < their_newest_item_age:
+                their_newest_item_age = item.age
+                their_newest_item = item
+
+        # Swap items only if both items are found
+        if my_newest_item and their_newest_item:
+            self.swap_items(other_vendor, my_newest_item, their_newest_item)
+            return True
+
