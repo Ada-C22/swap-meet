@@ -49,7 +49,7 @@ class Vendor:
         if not items_in_category:
             return None
 
-        best_item = max(items_in_category, key= lambda item : item.condition)
+        best_item = max(items_in_category, key= lambda item: item.condition)
         return best_item
 
     def swap_best_by_category(self, other_vendor, my_priority, their_priority):
@@ -59,4 +59,14 @@ class Vendor:
         swap = self.swap_items(other_vendor, other_vendor_priority, personal_priority)
         return swap
 
+    def swap_by_newest(self, other_vendor):
+        if not self.inventory or not other_vendor.inventory:
+            return None
 
+        my_newest_item = min(self.inventory, key=lambda item: item.age)     
+        other_vendors_newest_item = min(other_vendor.inventory, key=lambda item: item.age)
+
+        swap_newest_items = self.swap_items(other_vendor.inventory, 
+                            my_newest_item, other_vendors_newest_item)
+        
+        return swap_newest_items
