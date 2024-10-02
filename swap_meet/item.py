@@ -1,4 +1,6 @@
 from uuid import uuid4
+# from swap_meet.item import Item
+
 
 class Item:
     def __init__(self, id=None):
