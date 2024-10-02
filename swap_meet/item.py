@@ -22,6 +22,7 @@ class Item:
         '''
         return f"An object of type {self.get_category()} with id {self.id}."
     
+    #wave5
     def condition_description(self):
         if self.condition == 5:
             return "Mint condition - it's been in a museum"
@@ -33,8 +34,10 @@ class Item:
             return "Moderated used, but still kickin'!"
         elif self.condition == 1:
             return "Heavily used - but full of character"
-        else:
+        elif self.condition == 0:
             return "This one's a true survivor!"
+        else:
+            return "Condition must be from 0 to 5"
         
         
 item_a = Item(id=12345)
