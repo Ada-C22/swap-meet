@@ -52,7 +52,7 @@ def test_decor_has_expected_default_to_str():
     decor = Decor(id=TEST_CUSTOM_ID)
     expected_str = (
         f"An object of type Decor with id {TEST_CUSTOM_ID}. "
-        "It takes up a 0 by 0 sized space."
+        f"It takes up a 0 by 0 sized space."
     )
     assert str(decor) == expected_str
 
