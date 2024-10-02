@@ -1,5 +1,5 @@
 class Vendor:
-    def __init__(self, inventory=None):
+    def __init__(self, inventory=None,):
         inventory = [] if inventory is None else inventory
         self.inventory = inventory
 
@@ -42,11 +42,22 @@ class Vendor:
             other_vendor.inventory.remove(other_vendor.inventory[0])
             return True
         
-    def get_by_category(self,):
-        pass
+    def get_by_category(self, category):
+        category_list = []
+        for item in self.inventory:
+            if category == item.get_category(): 
+                category_list.append(item)
+        return category_list
+    
+    def get_best_by_category(self, category):
+        
+        best_item = self.inventory[0]
 
-    def get_best_by_category(self,):
-        pass
+        for item in self.inventory:
+            if category == item.get_category() and item.condition > best_item.condition:
+                best_item = item
+                return best_item
+
 
     def swap_best_by_categorty(self, other_vendor, my_priority, their_priority):
         pass

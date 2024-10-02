@@ -22,7 +22,7 @@ def test_get_items_by_category():
     assert item_a in items
     assert item_c in items
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_get_no_matching_items_by_category():
     item_a = Clothing()
     item_b = Item()
@@ -33,12 +33,13 @@ def test_get_no_matching_items_by_category():
 
     items = vendor.get_by_category("Electronics")
 
-    raise Exception("Complete this test according to comments below.")
+    assert len(items) == 0
+    #raise Exception("Complete this test according to comments below.")
     # *********************************************************************
     # ****** Complete Assert Portion of this test **********
     # *********************************************************************
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_best_by_category():
     item_a = Clothing(condition=2.0)
     item_b = Decor(condition=2.0)
@@ -54,7 +55,7 @@ def test_best_by_category():
     assert best_item.get_category() == "Clothing"
     assert best_item.condition == pytest.approx(4.0)
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_best_by_category_no_matches_is_none():
     item_a = Decor(condition=2.0)
     item_b = Decor(condition=2.0)
@@ -67,7 +68,7 @@ def test_best_by_category_no_matches_is_none():
 
     assert best_item is None
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_best_by_category_with_duplicates():
     # Arrange
     item_a = Clothing(condition=2.0)
@@ -84,7 +85,7 @@ def test_best_by_category_with_duplicates():
     assert best_item.get_category() == "Clothing"
     assert best_item.condition == pytest.approx(4.0)
 
-@pytest.mark.skip
+#@pytest.mark.skip
 def test_swap_best_by_category():
     # Arrange
     # me
