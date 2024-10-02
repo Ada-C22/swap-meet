@@ -94,7 +94,7 @@ def test_swap_items_when_their_item_is_missing_returns_false():
     assert item_e in jolie.inventory
     assert not result
 
-@pytest.mark.skip
+# @pytest.mark.skip
 def test_swap_items_from_my_empty_returns_false():
     fatimah = Vendor(
         inventory=[]
