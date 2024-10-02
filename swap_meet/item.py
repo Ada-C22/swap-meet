@@ -1,13 +1,10 @@
-import uuidinherita
+import uuid
 
 class Item:
     
     def __init__(self, id=None, condition=0):
         self.id = uuid.uuid4().int if id == None else id
-        # if id == None:
-            # self.id = uuid.uuid4().int
-        # else:
-            # self.id = id
+       
         self.condition = condition
         print(self.condition)
     def __str__(self):
@@ -16,8 +13,6 @@ class Item:
     def get_category(self):
         return "Item"
     
-    # Used ebay's site for reference:
-    # https://www.ebay.com/help/selling/listings/creating-managing-listings/item-conditions-category?id=4765
     def condition_description(self):
         condition_table = {
             5: "Brand New",
