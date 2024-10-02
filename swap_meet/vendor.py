@@ -1,4 +1,3 @@
-
 class Vendor:
     def __init__(self, inventory=None):
         if not inventory:
@@ -67,7 +66,7 @@ class Vendor:
         my_newest_item = min(self.inventory, key=lambda item: item.age)     
         other_vendors_newest_item = min(other_vendor.inventory, key=lambda item: item.age)
 
-        swap_newest_items = self.swap_items(other_vendor, 
+        swap_newest_items = self.swap_items(other_vendor.inventory, 
                             my_newest_item, other_vendors_newest_item)
         
         return swap_newest_items

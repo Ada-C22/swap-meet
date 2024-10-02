@@ -17,7 +17,8 @@ class Item:
         return f'An object of type Item with id {self.id}.'
     
     def condition_description (self):
-        condition_phrases = ['it depends', 'needs to function', 'pairs well', 'just because', 'best product to exist', 'you need this']
+        condition_phrases = ['it depends', 'needs to function', 'pairs well', 
+                             'just because', 'best product to exist', 'you need this']
         
         return condition_phrases[self.condition]
 
