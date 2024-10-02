@@ -1,7 +1,7 @@
 
 class Vendor:
     def __init__(self, inventory = None):
-        self.inventory = inventory if inventory is not None else []
+        self.inventory = [] if inventory is None else inventory
     
     def __contains__(self, item):
         # return self.inventory[0] <= item <= self.inventory[len(self.inventory-1)]
@@ -44,11 +44,6 @@ class Vendor:
         other_vendor.add(my_item)
         return True
     
-    def swap_first_item(self, other_vendor):
-        pass
-        # if other_vendor
-
-
 
     def swap_first_item(self,other_vendor=None ):
         # if either is empty return false
@@ -57,6 +52,7 @@ class Vendor:
         
         first_item = self.inventory[0]
         other_item = other_vendor.inventory[0]
+
          #swap remove inventory 
         self.remove(first_item)
         other_vendor.remove(other_item)

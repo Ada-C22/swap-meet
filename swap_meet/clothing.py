@@ -1,9 +1,8 @@
 from .item import Item
 
-class Clothing:
-    def __init__(self,id=Item().id, fabric= "Unknown"):
-        
-        self.id = id
+class Clothing(Item):
+    def __init__(self, id=None, fabric="Unknown", condition=0):
+        super().__init__(id, condition)
         self.fabric = fabric
     
     def __str__(self):
@@ -11,4 +10,5 @@ class Clothing:
     
     def get_category(self):
         return "Clothing"
+  
         
