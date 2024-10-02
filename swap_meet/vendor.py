@@ -40,6 +40,29 @@ class Vendor:
             return False
             
     def swap_first_item(self, other_vendor):
-        if not self.inventory or not other_vendor:
+
+        """
+        Function swaps my first item with their first item.
+        
+        Input: other vendor
+
+        Output: Returns either True or False. 
+        - Returns False if my inventory or their inventory is empty. 
+        - Otherwise, returns True.        
+        """
+
+        if not self.inventory or not other_vendor.inventory:
             return False
         
+        first_item_in_my_inventory = self.inventory[0]
+        first_item_in_vendor_inventory = other_vendor.inventory[0]
+        
+        swap_item = Vendor.swap_items(self, other_vendor, first_item_in_my_inventory, first_item_in_vendor_inventory)
+        print(self.inventory)
+        print(other_vendor.inventory)
+        return True
+
+mine = Vendor(inventory=["item_x", "item_y", "item_z"])
+fatimah = Vendor(inventory=["item_a", "item_b", "item_c"])
+
+print(mine.swap_first_item(fatimah))
