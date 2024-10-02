@@ -22,7 +22,7 @@ class Item:
 
     }
         return descriptions.get(self.condition, "Condition not recognized")
-    #Wave 3
+
     def __str__(self):
         # Return the formatted string as per the requirement
         return f"An object of type Item with id {self.id}."

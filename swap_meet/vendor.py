@@ -19,8 +19,6 @@ class Vendor:
             if item.id == id:
                 return item
         return None
-    
-    # Wave 3
 
     def swap_items(self, other_vendor, my_item, their_item):
         if my_item in self.inventory and their_item in other_vendor.inventory:
@@ -31,8 +29,7 @@ class Vendor:
             return True
         else:
             return False
-
-    # Wave 4    
+  
     def swap_first_item(self, other_vendor):
         if not self.inventory or not other_vendor.inventory:
             return False
