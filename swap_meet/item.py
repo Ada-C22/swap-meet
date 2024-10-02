@@ -17,8 +17,7 @@ class Item:
     
     def condition_description (self):
         condition_phrases = ['it depends', 'needs to function', 'pairs well', 
-                             'just because', 'best product to exist', 
-                             'you need this']
+                             'just because', 'best product to exist', 'you need this']
         
         return condition_phrases[self.condition]
 
