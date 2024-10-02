@@ -6,11 +6,13 @@ class Vendor:
         
 
     def add(self,item):
+        print("line 9:",self.inventory)
         inventory = self.inventory
         inventory.append(item)
         return item
     
     def remove(self,item):
+        print("line 15:",self.inventory)
         if item in self.inventory:
             inventory = self.inventory 
             inventory.remove(item)
@@ -25,7 +27,6 @@ class Vendor:
         return None
 
     def swap_items(self,other_vendor,my_item,their_item):
-        other_vendor = Vendor(other_vendor)
         my_removed_item = self.remove(my_item)
         their_removed_item = other_vendor.remove(their_item)
         if my_removed_item is not False and their_removed_item is not False: 
