@@ -44,7 +44,8 @@ class Vendor:
         other_vendor.add(my_item)
         return True
     
-
+    # DRY up code by using swap_items() inside of this method below
+    # in swap_first_item()
     def swap_first_item(self,other_vendor=None ):
         # if either is empty return false
         if not self.inventory or not other_vendor.inventory:
