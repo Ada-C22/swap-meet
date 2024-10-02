@@ -1,2 +1,14 @@
+import uuid
+
 class Item:
-    pass
+    # wave 2
+    def __init__(self, id=None, category="Item"):
+        self.id = id if id is not None else uuid.uuid4().int
+        self.category = category # default
+    
+    def get_category(self):
+        return self.category
+    
+    # wave 3
+    def __str__(self):
+        return f"An object of type Item with id {self.id}."
