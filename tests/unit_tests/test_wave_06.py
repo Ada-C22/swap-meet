@@ -33,10 +33,7 @@ def test_get_no_matching_items_by_category():
 
     items = vendor.get_by_category("Electronics")
 
-    raise Exception("Complete this test according to comments below.")
-    # *********************************************************************
-    # ****** Complete Assert Portion of this test **********
-    # *********************************************************************
+    assert not items
 
 # @pytest.mark.skip
 def test_best_by_category():
@@ -110,7 +107,11 @@ def test_swap_best_by_category():
         their_priority="Decor"
     )
 
-    raise Exception("Complete this test according to comments below.")
+    #Assert
+    assert result
+    assert len(tai.inventory) == 3 and len(jesse.inventory) == 3
+    assert item_a in tai.inventory and item_b in tai.inventory and item_f in tai.inventory
+    assert item_d in jesse.inventory and item_e in jesse.inventory and item_c in jesse.inventory
     # *********************************************************************
     # ****** Complete Assert Portion of this test **********
     # *********************************************************************
@@ -143,7 +144,12 @@ def test_swap_best_by_category_reordered():
         their_priority="Decor"
     )
 
-    raise Exception("Complete this test according to comments below.")
+    #Assert
+    assert result
+    assert len(tai.inventory) == 3 and len(jesse.inventory) == 3
+    assert item_a in tai.inventory and item_b in tai.inventory and item_f in tai.inventory
+    assert item_d in jesse.inventory and item_e in jesse.inventory and item_c in jesse.inventory
+    
     # *********************************************************************
     # ****** Complete Assert Portion of this test **********
     # *********************************************************************
@@ -228,7 +234,12 @@ def test_swap_best_by_category_no_match_is_false():
         their_priority="Clothing"
     )
 
-    raise Exception("Complete this test according to comments below.")
+    #Assert
+    assert not result
+    assert len(tai.inventory) == 3 and len(jesse.inventory) == 3
+    assert item_a in tai.inventory and item_b in tai.inventory and item_c in tai.inventory
+    assert item_d in jesse.inventory and item_e in jesse.inventory and item_f in jesse.inventory
+
     # *********************************************************************
     # ****** Complete Assert Portion of this test **********
     # *********************************************************************
@@ -261,7 +272,11 @@ def test_swap_best_by_category_no_other_match_is_false():
         their_priority="Decor"
     )
 
-    raise Exception("Complete this test according to comments below.")
+    #Assert
+    assert not result
+    assert len(tai.inventory) == 3 and len(jesse.inventory) == 3
+    assert item_a in tai.inventory and item_b in tai.inventory and item_c in tai.inventory
+    assert item_d in jesse.inventory and item_e in jesse.inventory and item_f in jesse.inventory
     # *********************************************************************
     # ****** Complete Assert Portion of this test **********
     # *********************************************************************
