@@ -40,6 +40,23 @@ def test_get_by_age_return_false_if_no_inventory():
     assert len(tai.inventory) == 0
 
 # @pytest.mark.skip
+def test_get_by_age_returns_only_item():
+    # Arrange
+    item_a = Decor(age=2.0)
+    item_b = Electronics(age=4.0)
+    item_c = Decor(age=4.0)
+    tai = Vendor(
+        inventory=[item_c]
+    )
+    
+    #Act
+    result = tai.get_by_age()
+
+    #Assert
+    assert result == item_c
+    assert len(tai.inventory) == 1
+
+# @pytest.mark.skip
 def test_get_newest_by_category():
     # Arrange
     item_a = Decor(age=5.0)
@@ -54,6 +71,41 @@ def test_get_newest_by_category():
 
     #Assert
     assert result is item_c
+    assert len(tai.inventory) is 3
+
+# @pytest.mark.skip
+def test_get_newest_by_category_returns_false_if_no_inventory():
+    # Arrange
+    item_a = Decor(age=5.0)
+    item_b = Electronics(age=4.0)
+    item_c = Decor(age=4.0)
+    tai = Vendor(
+        inventory=[]
+    )
+    
+    # Act
+    result = tai.get_newest_by_category("Decor")
+
+    #Assert
+    assert result is False
+    assert len(tai.inventory) is 0
+
+# @pytest.mark.skip
+def test_get_newest_by_category_returns_first_item_if_tie():
+    # Arrange
+    item_a = Decor(age=5.0)
+    item_b = Electronics(age=4.0)
+    item_c = Electronics(age=4.0)
+    tai = Vendor(
+        inventory=[item_a, item_b, item_c]
+    )
+    
+    # Act
+    result = tai.get_newest_by_category("Electronics")
+
+    #Assert
+    assert result is item_b
+    assert result is not item_c
     assert len(tai.inventory) is 3
 
 

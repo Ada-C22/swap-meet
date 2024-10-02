@@ -69,7 +69,8 @@ class Vendor:
     # Enhancements
 
     def get_by_age(self):
-        if 
+        if len(self.inventory) == 0:
+            return False
         newest = self.inventory[0]
         for item in self.inventory:
             if item.age < newest.age:
