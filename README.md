@@ -199,9 +199,9 @@ The remaining tests in wave 6 imply:
     - `my_priority`, which represents a category that the `Vendor` wants to receive
     - `their_priority`, which represents a category that `other_vendor` wants to receive
   - The best item in my inventory that matches `their_priority` category is swapped with the best item in `other_vendor`'s inventory that matches `my_priority`
+    - If `other_vendor` has no item that matches `my_priority` category, swapping does not happen, and it returns `False`
     - It returns `True`
     - If the `Vendor` has no item that matches `their_priority` category, swapping does not happen, and it returns `False`
-    - If `other_vendor` has no item that matches `my_priority` category, swapping does not happen, and it returns `False`
 
 ### DRYing up the code
 
