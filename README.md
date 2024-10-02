@@ -144,7 +144,8 @@ In Wave 4 we will write one method, `swap_first_item`.
 
 ### Wave 5
 
-In Wave 5 we will create three additional modules with three additional classes.
+In Wave 5 we will create three additional modules with three additional 
+classes.
 
 Our new modules should be defined as follows:
 - `Clothing`
@@ -168,7 +169,8 @@ Our new modules should be defined as follows:
     - When we instantiate an instance of `Decor`, we can optionally 
     pass in integers with the keyword arguments `width` and `length`
   - Has a function `get_category` that returns `"Decor"`
-  - Has a stringify method that returns `"An object of type Decor with id <id value>. It takes up a <width value> by <length value> sized space."`
+  - Has a stringify method that returns
+  - `"An object of type Decor with id <id value>. It takes up a <width value> by <length value> sized space."`
     - For example, if we had a `Decor` instance with an `id` of `123435`, `width` of `3`, and `length` of `7`, its stringify method should return `"An object of type Decor with id 12345. It takes up a 3 by 7 sized space."`
 - `Electronics`
   - Has an attribute `id` that is by default a unique integer
