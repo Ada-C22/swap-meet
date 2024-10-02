@@ -45,8 +45,8 @@ class Vendor:
     def get_by_category(self,):
         pass
 
-    def get_best_by_category(self, ):
+    def get_best_by_category(self,):
         pass
 
-    def swap_best_by_categorty(self, ):
+    def swap_best_by_categorty(self, other_vendor, my_priority, their_priority):
         pass

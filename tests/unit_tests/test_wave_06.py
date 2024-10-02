@@ -5,7 +5,7 @@ from swap_meet.clothing import Clothing
 from swap_meet.decor import Decor
 from swap_meet.electronics import Electronics
 
-@pytest.mark.skip
+# @pytest.mark.skip
 def test_get_items_by_category():
     item_a = Clothing()
     item_b = Electronics()
