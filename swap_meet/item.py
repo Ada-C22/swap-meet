@@ -7,17 +7,19 @@ class Item:
     def get_category(self):
         return self.__class__.__name__
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"An object of type Item with id {self.id}."
 
     def condition_description(self):
-        if self.condition in range(0, 6):
-            condition_descriptions = {
-                1: "Acceptable",
-                2: "Good",
-                3: "Very Good",
-                4: "Like New",
-                5: "Brand New",
-                0: "Unknown"
-            }
-            return condition_descriptions[self.condition]
+        descriptions = {
+            0: "It's basically a wreck. You might want to steer clear of this one.",
+            1: "Heavily used. You probably want a glove for this one...",
+            2: "Well-loved, but still hanging in there.",
+            3: "In good condition! Ready for a new home.",
+            4: "Like new! You can hardly tell it’s been used.",
+            5: "Mint condition! An absolute treasure."
+        }
+
+
+        return descriptions.get(self.condition, "Condition unrecognized")
+
