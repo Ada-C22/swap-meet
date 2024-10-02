@@ -1,10 +1,3 @@
-class Item:
-    pass
-
-def __str__(self):
-        id_str = str(self.id)
-        return (f"An object of type Item with id {id_str}.")
-
 import uuid 
 
 class Item:
@@ -17,3 +10,6 @@ class Item:
         # return string of class
         return self.category
 
+    def __str__(self):
+        id_str = str(self.id)
+        return (f"An object of type Item with id {id_str}.")
