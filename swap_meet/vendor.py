@@ -1,8 +1,3 @@
-from .clothing import Clothing
-from .decor import Decor
-from .electronics import Electronics
-from swap_meet.item import Item
-
 class Vendor:
     def __init__(self, inventory=None):
         if not inventory:
