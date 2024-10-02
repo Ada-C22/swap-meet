@@ -6,6 +6,7 @@ class Item:
         self.condition = condition if condition is not None else 0
     def get_category(self):
         return type(self).__name__
+<<<<<<< HEAD
     def __str__(self):
         return f"An object of type Item with id {self.id}."
     def condition_description(self):
@@ -23,3 +24,6 @@ class Item:
             return "Almost like new!"
         else:
             return "Mint condition"
+=======
+
+>>>>>>> 9c7535adefe921d864709ad63ecd980fca45fd41
