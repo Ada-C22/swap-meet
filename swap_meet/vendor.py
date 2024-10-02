@@ -25,12 +25,10 @@ class Vendor:
         
         # return Item object inside the inventory list
         # whose id matches the vendor id
-        for item in self.inventory:
-            if vendor_id == item.id:
-                return item
-            
-        return None
-                
+        for object in self.inventory:
+            if vendor_id == object.id:
+                return object
+        return None   
         
     def swap_items(self, other_vendor, my_item, their_item):
 
@@ -62,6 +60,22 @@ class Vendor:
         other_vendor.add(first_item)
         
         return True
+    
+    def get_by_category(self, category):
+        
+        category_objects = [object for object in self.inventory if category ==  object.get_category()]
+        return category_objects
+       
+    
+    def get_best_by_category(self, category_best):
+
+        
+        
+            
+            
+            
+        
+    
         
       
         
