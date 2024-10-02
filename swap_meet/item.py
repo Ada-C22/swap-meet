@@ -14,14 +14,14 @@ class Item:
     def condition_description(self):
         match self.condition:
             case 0: 
-                return "new"
-            case 1:
-                return "like new"
-            case 2:
-                return "acceptable"
-            case 3:
-                return "decent"
-            case 4:
-                return "used"
-            case 5:
                 return "heavily used"
+            case 1:
+                return "used"
+            case 2:
+                return "decent"
+            case 3:
+                return "acceptable"
+            case 4:
+                return "like new"
+            case 5:
+                return "new"
