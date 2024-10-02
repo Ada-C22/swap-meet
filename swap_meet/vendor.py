@@ -1,5 +1,3 @@
-from .item import Item
-
 class Vendor:
     def __init__(self, inventory=None):
         inventory = [] if not inventory else inventory
