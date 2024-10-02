@@ -137,8 +137,3 @@ def test_swap_items_from_their_empty_returns_false():
     assert item_b in fatimah.inventory
     assert item_c in fatimah.inventory
     assert not result
-
-    # raise Exception("Complete this test according to comments below.")
-    # *********************************************************************
-    # ****** Complete Assert Portion of this test **********
-    # *********************************************************************
