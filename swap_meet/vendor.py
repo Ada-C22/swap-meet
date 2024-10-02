@@ -32,10 +32,9 @@ class Vendor:
         self.inventory.remove(my_item)
         other_vendor.inventory.append(my_item)
         return True
-        
     
     def swap_first_item(self, other_vendor):
-        if len(self.inventory) == 0 or len(other_vendor.inventory) ==0:
+        if len(self.inventory) == 0 or len(other_vendor.inventory) == 0:
             return False
         first_item = self.inventory[0]
         first_item_other = other_vendor.inventory[0]
@@ -45,8 +44,6 @@ class Vendor:
             other_vendor.inventory.remove(first_item_other)
             self.inventory.append(first_item_other)
             return True
-        return None
-    
     
     def get_by_category(self, category="Unknown"):
         return[item for item in self.inventory if item.get_category() == category]
