@@ -58,7 +58,7 @@ def test_swap_items_when_my_items_age_is_missing_returns_false():
     assert result
 
 #@pytest.mark.skip
-def test_swap_items_by_newest_when__is_missing_returns_false():
+def test_swap_newest_items_when_is_missing_returns_false():
     fatimah = Vendor(
         inventory=[]
         )
@@ -79,8 +79,8 @@ def test_swap_items_by_newest_when__is_missing_returns_false():
     assert item_e not in fatimah.inventory
     assert not result
 
-@pytest.mark.skip
-def test_swap_items_from_my_empty_returns_false():
+# @pytest.mark.skip
+def test_swap_newest_items_from_my_empty_returns_false():
     fatimah = Vendor(
         inventory=[]
     )
@@ -91,16 +91,14 @@ def test_swap_items_from_my_empty_returns_false():
         inventory=[item_d, item_e]
     )
 
-    nobodys_item = Item()
-
-    result = fatimah.fatimah.swap_by_newest(jolie)
+    result = fatimah.swap_by_newest(jolie)
 
     assert len(fatimah.inventory) == 0
     assert len(jolie.inventory) == 2
     assert not result
 
-@pytest.mark.skip
-def test_swap_items_from_their_empty_returns_false():
+# @pytest.mark.skip
+def test_swap_newest_items_from_their_empty_returns_false():
     item_a = Item()
     item_b = Item()
     item_c = Item()
@@ -112,9 +110,7 @@ def test_swap_items_from_their_empty_returns_false():
         inventory=[]
     )
 
-    nobodys_item = Item()
-
-    result = fatimah.swap_items(jolie, item_b, nobodys_item)
+    result = fatimah.swap_by_newest(jolie)
 
     try:
         result == False

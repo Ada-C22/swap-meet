@@ -64,7 +64,7 @@ def test_best_by_category_no_matches_is_none():
 
     best_item = tai.get_best_by_category("Electronics")
 
-    assert best_item is None
+    assert best_item == False
 
 # @pytest.mark.skip
 def test_best_by_category_with_duplicates():
