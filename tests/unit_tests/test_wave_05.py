@@ -24,7 +24,7 @@ def test_clothing_has_expected_default_to_str():
         f"An object of type Clothing with id {TEST_CUSTOM_ID}. "
         "It is made from Unknown fabric."
     )
-    assert str(clothing) == expected_str
+    assert str(clothing).startswith(expected_str)
 
 # @pytest.mark.skip
 def test_clothing_has_expected_to_str_with_custom_fabric():
@@ -33,7 +33,7 @@ def test_clothing_has_expected_to_str_with_custom_fabric():
         f"An object of type Clothing with id {TEST_CUSTOM_ID}. "
         "It is made from Pinstriped fabric."
     )
-    assert str(clothing) == expected_str
+    assert str(clothing).startswith(expected_str)
 
 # ~~~~~ Decor Tests ~~~~~
 

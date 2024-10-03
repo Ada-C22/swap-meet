@@ -7,4 +7,7 @@ class Clothing(Item):
 
 
     def __str__(self) -> str:
-        return f"An object of type Clothing with id {self.id}. It is made from {self.fabric} fabric."
+        str_to_print = f"An object of type Clothing with id {self.id}. " \
+                        f"It is made from {self.fabric} fabric.\
+                        It was prodused on {self.age.strftime("%x")}"
+        return str_to_print
