@@ -11,16 +11,10 @@ class Item:
     def get_category(self):
         return self.__class__.__name__
     
-    # please update
+    
     def condition_description(self):
-        if self.condition == 5:
-            return "Mint"
         if self.condition >= 4:
-            return "Like new"
-        if self.condition >= 3:
-            return "Very good"
-        if self.condition >= 2:
-            return "Good"
-        if self.condition >= 1:
-            return "Acceptable"
-        return "Heavily used"
+            return "Excellent!"
+        if 2 < self.condition < 4:
+            return "Good!"
+        return "Worn"
