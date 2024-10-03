@@ -146,13 +146,7 @@ def test_swap_best_by_category_reordered():
     assert item_c in jesse.inventory and item_c not in tai.inventory
     assert item_d in jesse.inventory and item_e in jesse.inventory
     assert item_a in tai.inventory and item_b in tai.inventory
-    # *********************************************************************
-    # ****** Complete Assert Portion of this test **********
-    # *********************************************************************
-    # Assertions should check:
-    # - That result is truthy
-    # - That tai and jesse's inventories are the correct length
-    # - That all the correct items are in tai and jesse's inventories, and that the items that were swapped are not there
+
 
 # @pytest.mark.skip
 def test_swap_best_by_category_no_inventory_is_false():

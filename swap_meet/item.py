@@ -14,7 +14,7 @@ class Item:
     
     def __str__(self):
         category = self.get_category()
-        str_id= str(self.id)
+        str_id = str(self.id)
         return f"An object of type {category} with id {str_id}."
     
     def condition_description(self):
