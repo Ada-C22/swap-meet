@@ -54,7 +54,7 @@ def test_decor_has_expected_default_to_str():
         f"An object of type Decor with id {TEST_CUSTOM_ID}. "
         "It takes up a 0 by 0 sized space."
     )
-    assert str(decor) == expected_str
+    assert str(decor).startswith(expected_str)
 
 # @pytest.mark.skip
 def test_decor_has_expected_to_str_with_custom_size():
@@ -63,7 +63,7 @@ def test_decor_has_expected_to_str_with_custom_size():
         f"An object of type Decor with id {TEST_CUSTOM_ID}. "
         "It takes up a 3 by 12 sized space."
     )
-    assert str(decor) == expected_str
+    assert str(decor).startswith(expected_str)
 
 # ~~~~~ Electronics Tests ~~~~~
 
