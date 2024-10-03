@@ -72,4 +72,3 @@ class Vendor:
             return True
 
         return False
-
