@@ -24,10 +24,8 @@ def test_condition_description():
     assert len(vendor.inventory) == 6
     assert result_a and result_b == "Excellent!"
     assert result_c and result_d == "Good!"
-    assert result_e and result_f == "Worn"
+    assert result_e and result_f == "Not the best!"
 
-# Specific to Jen's implementation
-@pytest.mark.skip
 def test_swap_by_newest():
     item_a = Decor(age=2.5)
     item_b = Electronics(age=3.0)
@@ -58,7 +56,6 @@ def test_swap_by_newest():
     assert item_e.age == pytest.approx(5.5)
     assert item_f.age == pytest.approx(12.0)
 
-@pytest.mark.skip
 def test_swap_by_newest_reordered():
     item_a = Decor(age=2.5)
     item_b = Electronics(age=3.0)
@@ -89,7 +86,6 @@ def test_swap_by_newest_reordered():
     assert item_e.age == pytest.approx(5.5)
     assert item_f.age == pytest.approx(12.0)
 
-@pytest.mark.skip
 def test_swap_by_newest_no_inventory_is_false():
     tai = Vendor(inventory=[])
     item_a = Clothing(age=10.5)
@@ -108,7 +104,6 @@ def test_swap_by_newest_no_inventory_is_false():
     assert item_b.age == pytest.approx(5.5)
     assert item_c.age == pytest.approx(12.0)
 
-@pytest.mark.skip
 def test_swap_by_newest_no_other_inventory_is_false():
     item_a = Decor(age=2.5)
     item_b = Electronics(age=3.0)
@@ -128,7 +123,6 @@ def test_swap_by_newest_no_other_inventory_is_false():
     assert item_b.age == pytest.approx(3.0)
     assert item_c.age == pytest.approx(2.0)
 
-@pytest.mark.skip
 def test_swap_by_newest_items_same_age():
     item_a = Decor(age=2.5)
     item_b = Electronics(age=2.5)

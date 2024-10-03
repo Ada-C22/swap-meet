@@ -18,4 +18,4 @@ class Item:
             return "Excellent!"
         if 2 <= self.condition < 4:
             return "Good!"
-        return "Worn"
+        return "Not the best!"
