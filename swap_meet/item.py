@@ -14,11 +14,6 @@ class Item:
     
     # wave 3
     def __str__(self):
-        '''
-        `item_a = Item(id=12345)`, 
-        the output of `str(item_a):
-        should be `"An object of type Item with id 12345."`
-        '''
         return f"An object of type {self.get_category()} with id {self.id}."
     
     def condition_description(self):
@@ -35,7 +30,3 @@ class Item:
         else:
             return "This one's a true survivor!"
         
-        
-item_a = Item(id=12345)
-
-print(item_a)
