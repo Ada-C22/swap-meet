@@ -245,9 +245,11 @@ def test_swap_best_by_category_no_match_is_false():
     # - That result is falsy
     assert result == False
     # - That tai and jesse's inventories are the correct length
-    assert len(tai.inventory) == 3 and len(jesse.inventory) == 3
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
     # - That all the correct items are in tai and jesse's inventories
-    assert tai.inventory == [item_a, item_b, item_c] and jesse.inventory == [item_d, item_e, item_f]
+    assert tai.inventory == [item_a, item_b, item_c]
+    assert jesse.inventory == [item_d, item_e, item_f]
 
 #@pytest.mark.skip
 def test_swap_best_by_category_no_other_match_is_false():
