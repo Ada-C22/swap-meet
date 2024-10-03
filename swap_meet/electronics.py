@@ -1,6 +1,6 @@
 from .item import Item
 class Electronics(Item):
-    def __init__(self, id, type= "Unknown"):
+    def __init__(self, id=None, type= "Unknown"):
         super().__init__(id, condition=0)
         self.type = type
         

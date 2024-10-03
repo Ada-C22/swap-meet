@@ -1,11 +1,11 @@
 from .item import Item
 class Decor(Item):
-    def __init__(self, id, width= 0,length= 0):
+    def __init__(self,id=None, width= 0,length= 0):
         super().__init__(id, condition=0)
         self.width = width
         self.length = length
 
-    def get_category():
+    def get_category(self):
         return "Decor"
     
     def __str__(self):

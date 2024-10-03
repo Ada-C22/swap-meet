@@ -4,7 +4,7 @@ class Item:
     def __init__(self, id=None, condition=0): 
     # If id is passed, use it. Otherwise, generate a unique id using uuid
         self.id = id if id is not None else uuid.uuid4().int
-
+        self.condition = condition     
     def get_category(self):
         # return string of class
         return "Item"
