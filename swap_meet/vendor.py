@@ -1,5 +1,3 @@
-from swap_meet.item import Item
-
 class Vendor:
     def __init__(self, inventory=None):
         self.inventory = [] if inventory is None else inventory
@@ -54,12 +52,10 @@ class Vendor:
         if not self.inventory or not other_vendor.inventory:
             return False
         
-        first_item_in_my_inventory = self.inventory[0]
-        first_item_in_vendor_inventory = other_vendor.inventory[0]
+        first_item_in_mine = self.inventory[0]
+        first_item_in_vendor = other_vendor.inventory[0]
         
-
-        self.inventory[0] = first_item_in_vendor_inventory
-        other_vendor.inventory[0] = first_item_in_my_inventory
+        self.swap_items(other_vendor, first_item_in_mine, first_item_in_vendor)
         
         return True
 
@@ -88,7 +84,7 @@ class Vendor:
 
         Input: a string, representing a category
 
-        Output: returns single item which has the highest condition and same category
+        Output: returns single item with the highest condition and same category
         """
 
         items = self.get_by_category(category)
@@ -107,8 +103,8 @@ class Vendor:
         """
         Swaps the best item of a certain category.
 
-        Input: other_vendor, my_priority (aka my category I want to receive), their_priority
-        (aka their category they want to receive).
+        Input: other_vendor, my_priority (aka my category I want to receive), 
+        their_priority (aka their category they want to receive).
 
         Output: returns True if both can swap best item, returns false if vendor 
         or self doesn't have a matching item to swap.
