@@ -13,9 +13,9 @@ def test_integration_wave_04_05_06():
     item_clothing1 = Clothing(condition=1.0, id=123, fabric="Geometric Pattern")
     item_clothing2 = Clothing(condition=2.0, id=321)
     item_electronics1 = Electronics(condition=1.0, id=456)
-    item_electronics2 = Electronics(condition=2.0, id=654, type="Kitchen Appliance")
-    item_decor1 = Decor(condition=1.0, id=789)
-    item_decor2 = Decor(condition=2.0, id=987, width=4, length=2)
+    iteem_decor1 = Decor(condition=1.0, id=789)
+    im_electronics2 = Electronics(condition=2.0, id=654, type="Kitchen Appliance")
+    ittem_decor2 = Decor(condition=2.0, id=987, width=4, length=2)
 
     camila.add(item_electronics1)
     camila.add(item_clothing1)
