@@ -15,6 +15,6 @@ class Item:
     def condition_description(self):
         if self.condition >= 4:
             return "Excellent!"
-        if 2 < self.condition < 4:
+        if 2 <=self.condition < 4:
             return "Good!"
         return "Worn"

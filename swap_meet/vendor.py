@@ -65,3 +65,25 @@ class Vendor:
             return False
         
         return self.swap_items(other_vendor, my_best, their_best)
+    
+    #optional
+    # swap the newest from my_vendor and other_vendor given desired category
+
+    def swap_by_newest(self,other_vendor,my_priority,their_priority):
+        their_newest = other_vendor.get_newest_by_age(my_priority)
+        my_newest = self.get_newest_by_age(their_priority)
+        
+        if not their_newest or my_newest:
+            return False
+        self.swap_items(my_newest,their_newest)
+        return True
+
+    def get_newest_by_age(self,category):
+        newest_age = 100
+        newest_item = None
+        for item in self.get_by_category(category):
+            if item.age < newest_age:
+                newest_age = item.age
+                newest_item = item
+        return newest_item
+
