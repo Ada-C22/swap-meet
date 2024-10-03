@@ -23,5 +23,8 @@ class Item:
         }
         return descriptions.get(self.condition, "Unknowned condition.")
     
+    def get_condition(self):
+        return self.condition
+    
     def __str__(self):
         return f"An object of type Item with id {self.id}."
