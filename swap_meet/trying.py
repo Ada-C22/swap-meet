@@ -15,3 +15,11 @@
 
 # random_id2 = uuid.uuid4().int
 # print(random_id2)
+
+# class Testing:
+
+#     def return_name(self):
+#         return self.__class__.__name__
+
+# test = Testing()
+# print(test.return_name())

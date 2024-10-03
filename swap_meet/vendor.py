@@ -43,24 +43,22 @@ class Vendor:
         best_item_my_priority = other_vendor.get_best_by_category(my_priority)
         best_item_their_priority = self.get_best_by_category(their_priority)
         if best_item_my_priority and best_item_their_priority:
-            self.remove(best_item_their_priority)
-            other_vendor.add(best_item_their_priority)
-            other_vendor.remove(best_item_my_priority)
-            self.add(best_item_my_priority)
-            return True
+            return self.swap_items_helper(other_vendor, best_item_their_priority, best_item_my_priority)
         else:
             return False
 
+    def swap_items_helper(self, other_vendor, my_item_to_swap, thier_item_to_swap):
+        self.remove(my_item_to_swap)
+        other_vendor.add(my_item_to_swap)
+        other_vendor.remove(thier_item_to_swap)
+        self.add(thier_item_to_swap)
+        return True
 
     def swap_items(self, other_vendor, my_item, thier_item):
         my_item_exists = self.get_by_id(my_item.id)
         thier_item_exists = other_vendor.get_by_id(thier_item.id)
         if my_item_exists and thier_item_exists:
-            self.remove(my_item)
-            other_vendor.add(my_item)
-            other_vendor.remove(thier_item)
-            self.add(thier_item)
-            return True
+            return self.swap_items_helper(other_vendor, my_item, thier_item)
         else:
             return False
         
@@ -70,9 +68,5 @@ class Vendor:
             thier_first_item = other_vendor.inventory[0]
         except IndexError:
             return False 
-        self.remove(my_first_item)
-        other_vendor.add(my_first_item)
-        other_vendor.remove(thier_first_item)
-        self.add(thier_first_item)
-        return True
+        return self.swap_items_helper(other_vendor, my_first_item, thier_first_item)
         

@@ -7,8 +7,7 @@ class Item:
         self.condition = condition
 
     def get_category(self):
-        return "Item"
-        #can refactor to return the name of the class if time allows 
+        return self.__class__.__name__
     
     def __str__(self):
         return f"An object of type {self.get_category()} with id {self.id}."
