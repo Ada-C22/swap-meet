@@ -283,7 +283,7 @@ def test_item_has_valid_age():
     assert item.age
     assert item.age == datetime(*age)
 
-def test_swap_by_newest_valid_truthy():
+def test_swap_by_newest_returns_true():
     # Arrange
     item_a = Decor(age=(2024,9,6)) # newest
     item_b = Electronics(age=(2023,6,6))
@@ -299,13 +299,63 @@ def test_swap_by_newest_valid_truthy():
         inventory=[item_f, item_e, item_d]
     )
     # Act
-    actual = tai.swap_by_newest(jesse)
+    exchanged = tai.swap_by_newest(jesse)
     
     # Assert
-    assert actual
+    assert exchanged
     assert len(tai.inventory) == 3
     assert len(jesse.inventory) == 3
     assert tai.inventory == [item_c, item_b, item_f]
     assert jesse.inventory == [item_e, item_d,item_a]
     
+def test_swap_by_newest_swaps_first_newest_in_inventory():
+    # Arrange
+    item_a = Decor(age=(2024,9,6)) # newest
+    item_b = Electronics(age=(2023,6,6))
+    item_c = Decor(age=(2024,9,6)) # newest
+    tai = Vendor(
+        inventory=[item_c, item_b, item_a]
+    )
+
+    item_d = Clothing(age=(2024,9,1))
+    item_e = Decor(age=(2023,9,6))
+    item_f = Clothing(age=(2024,9,8))   # newest
+    jesse = Vendor(
+        inventory=[item_f, item_e, item_d]
+    )
+    # Act
+    print(f"{tai.inventory=}")
+    print(f"{jesse.inventory=}")
+    exchanged = tai.swap_by_newest(jesse)
+    print(f"{tai.inventory=}")
+    print(f"{jesse.inventory=}")
+    
+    # Assert
+    assert exchanged
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
+    assert tai.inventory == [ item_b, item_a, item_f]
+    assert jesse.inventory == [ item_e, item_d, item_c ]
+    
+def test_swap_by_newest_returns_false_with_empty_inventory():
+    # Arrange
+    item_a = Decor(age=(2024,9,6)) # newest
+    item_b = Electronics(age=(2023,6,6))
+    item_c = Decor(age=(2024,9,6)) # newest
+    tai = Vendor(
+        inventory=[item_c, item_b, item_a]
+    )
+
+    jesse = Vendor(
+        inventory=[]
+    )
+    # Act
+    exchanged = tai.swap_by_newest(jesse)
+    
+    # Assert
+    assert not exchanged
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 0
+    assert tai.inventory == [item_c, item_b, item_a]
+    assert jesse.inventory == []
     
