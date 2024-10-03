@@ -281,7 +281,7 @@ def test_item_has_valid_age():
     item = Item(age=age)
     # Assert
     assert item.age
-    assert item.age == datetime(*age)
+    assert item.age == datetime(*age).date()
 
 def test_swap_by_newest_returns_true():
     # Arrange

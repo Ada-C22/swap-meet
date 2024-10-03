@@ -5,7 +5,7 @@ class Item:
     def __init__(self, id=None, condition=0, age=None):
         self.id = int(uuid1()) if id is None else id
         self.condition = condition
-        self.age = datetime.now() if age is None else datetime(*age)
+        self.age = datetime.today().date() if age is None else datetime(*age).date()
 
     def get_category(self):
         return self.__class__.__name__
