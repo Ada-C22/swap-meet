@@ -27,7 +27,7 @@ class Decor(Item):
         super().__init__(id, condition, age)
         self.width = width
         self.length = length
-    
+
     def __str__(self):
         return  f"An object of type Decor with id {self.id}. "\
                 f"It takes up a {self.width} by {self.length} sized space. "\
