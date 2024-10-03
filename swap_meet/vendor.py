@@ -1,7 +1,7 @@
 class Vendor:
 
     def __init__(self, inventory=None):
-        self.inventory = [] if inventory is None else inventory
+        self.inventory = inventory or []
 
     def add(self, new_item_added):
         self.inventory.append(new_item_added)
@@ -18,6 +18,8 @@ class Vendor:
         for item in self.inventory:
             if item.id == item_id:
                 return item
+        # result = next(filter(lambda item: item.id == item_id, self.inventory), None)
+        # return result
 
     def swap_helper(self, other_vendor, my_item, their_item):
         self.inventory.remove(my_item)
@@ -45,6 +47,8 @@ class Vendor:
             if item.get_category() == category.capitalize():
                 result.append(item)
         return result
+        # result = list(filter(lambda item: item.get_category() == category.capitalize(), self.inventory))
+        # return result
 
     def get_best_by_category(self, category):
         items_in_category = self.get_by_category(category)
