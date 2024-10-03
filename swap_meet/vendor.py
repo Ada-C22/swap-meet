@@ -1,3 +1,4 @@
+import math
 from swap_meet.item import Item
 
 class Vendor:
@@ -23,35 +24,73 @@ class Vendor:
     def swap_items(self,other_vendor,my_item,their_item):
         if my_item not in self.inventory or \
             their_item not in other_vendor.inventory:
-            return False
-        
+            return False      
         self.remove(my_item)
         other_vendor.add(my_item)
-
         other_vendor.remove(their_item)
         self.add(their_item)
+        return True
+
+
+    def swap_first_item(self,other_vendor):
+        if not self.inventory or not other_vendor.inventory:
+            return False
+        
+        my_first = self.inventory[0]
+        their_first = other_vendor.inventory[0]
+        # if my_first not in self.inventory or \
+        #     their_first not in other_vendor.inventory:
+        #     return False
+        self.swap_items(other_vendor,my_first,their_first)
 
         return True
     
-    # def swap_items(self, other_vendor, my_item, their_item):
-    #     if my_item not in self.inventory or their_item not in other_vendor.inventory:
-    #         return False
+    def get_by_category(self,category):
+        res = []
+        for item in self.inventory: 
+            if item.get_category() == category:
+                res.append(item)
+        return res
+
+    def get_best_by_category(self,category):
+        best_condition = 0.0
+        best_item = None
+        for item in self.inventory:
+            if item.get_category() == category:
+                if item.condition > best_condition:
+                    best_condition = item.condition
+                    best_item = item
         
-    #     for i in range(len(self.inventory)):
-    #         if self.inventory[i] == my_item:
-    #             self.inventory[i] = their_item
-    #             break
-        
-    #     for j in range(len(other_vendor.inventory)):
-    #         if other_vendor.inventory[j] == their_item:
-    #             other_vendor.inventory[j] = my_item
-    #             break
+        return best_item
+    
+    def swap_best_by_category(self,other_vendor,my_priority,their_priority):
 
-    #     return True
+        my_best= self.get_best_by_category(their_priority)
+        their_best = other_vendor.get_best_by_category(my_priority)
 
-    def swap_first_item(self,other_vendor):
-        my_first = self.inventory[0]
-        their_first = other_vendor.inventory[0]
+        if not my_best or not their_best:
+            return False
+  
+        self.swap_items(other_vendor,my_best,their_best)
 
-        result = self.swap_items(other_vendor,my_first,their_first)
+        return True
+
+    ##optional
+
+    # swap the newest from my_vendor and other_vendor
+    #regardless of the catergory
+    def swap_by_newest(self,other_vendor,my_priority,their_priority):
+    
+        pass
+
+    def get_newest_by_age(self,category):
+        newest_age = 100
+        newest_item = None
+        for item in self.get_by_category(category):
+            if item.age < newest_age:
+                newest_age = item.age
+                newest_item = item
+        return newest_item
+
+
 
