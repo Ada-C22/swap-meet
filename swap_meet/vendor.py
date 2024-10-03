@@ -42,7 +42,16 @@ class Vendor:
         other_vendor.inventory[0] = first_vendor_item
 
         return True 
+    
+    def get_by_category(self, category):
+        items_in_category = []
+        for item in self.inventory:
+            if item.get_category() == category:
+                items_in_category.append(item)
+        return items_in_category
         
+
+
 
 
 

@@ -7,7 +7,7 @@ class Item:
         self.condition = condition     
     def get_category(self):
         # return string of class
-        return "Item"
+        return "Item" ###
 
     def __str__(self):
         # id_str = str(self.id)
