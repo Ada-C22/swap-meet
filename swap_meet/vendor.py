@@ -18,10 +18,6 @@ class Vendor:
             return False
     # wave 2      
     def get_by_id(self, id):
-        '''
-        iventory = [ Item(), Item()]
-        where Item has id
-        '''
         for item in self.inventory:
             if id == item.id:
                 return item
@@ -30,12 +26,12 @@ class Vendor:
     # wave 3
     def swap_items(self, other_vendor, my_item, their_item):
         if my_item in self.inventory and their_item in other_vendor.inventory:
-            #look through Vendor's inventory and find where my_item is located and return its index
-            my_item_index = self.inventory.index(my_item)
-            self.inventory[my_item_index] = their_item
-            
-            their_item_index = other_vendor.inventory.index(their_item)
-            other_vendor.inventory[their_item_index] = my_item
+
+            my_index = self.inventory.index(my_item)
+            their_index = other_vendor.inventory.index(their_item)
+
+            self.inventory[my_index] = their_item
+            other_vendor.inventory[their_index] = my_item
             return True
         else:
             return False
@@ -58,39 +54,34 @@ class Vendor:
         for item in self.inventory:
             if item.get_category() == category:
                 items_matching_category.append(item)
-        return items_matching_category       
-        
+        return items_matching_category
+    
     def get_best_by_category(self, category):
-        
         items_matching_category = self.get_by_category(category)
-        
+ 
         if not items_matching_category:
             return None
         
-        best_item = None 
-        best_condition = -1
-        
+        max_condition = -1
+        max_item = None
+
         for item in items_matching_category:
-            if item.condition > best_condition:
-                best_item = item  
-                best_condition = item.condition  
-        
-        return best_item
+            if item.condition > max_condition:
+                max_condition = item.condition
+                max_item = item
+        return max_item
     
     def swap_best_by_category(self, other_vendor, my_priority, their_priority):
-        my_item = self.get_best_by_category(their_priority)
-        their_item = other_vendor.get_best_by_category(my_priority)
-        
-        if not my_item or not their_item:
+        their_best_item_my_priority = other_vendor.get_best_by_category(my_priority)
+        my_best_item_their_priority = self.get_best_by_category(their_priority)
+
+        if not their_best_item_my_priority or not my_best_item_their_priority:
             return False
         
-        self.swap_items(other_vendor, my_item, their_item)
+        self.swap_items(other_vendor, my_best_item_their_priority, their_best_item_my_priority)
         return True
-    
-    # Optional Enhancements
-    def get_newest(self):
-        pass
-    
-    def swap_by_newest(self):
-        pass
-    
+
+        
+
+
+            

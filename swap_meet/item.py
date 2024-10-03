@@ -7,7 +7,6 @@ class Item:
             self.id = int(uuid.uuid4())
         else:
             self.id = id
-            
         self.condition = condition
         
     def get_category(self):
@@ -15,11 +14,6 @@ class Item:
     
     # wave 3
     def __str__(self):
-        '''
-        `item_a = Item(id=12345)`, 
-        the output of `str(item_a):
-        should be `"An object of type Item with id 12345."`
-        '''
         return f"An object of type {self.get_category()} with id {self.id}."
     
     #wave5
@@ -39,7 +33,3 @@ class Item:
         else:
             return "Condition must be from 0 to 5"
         
-        
-item_a = Item(id=12345)
-
-print(item_a)
