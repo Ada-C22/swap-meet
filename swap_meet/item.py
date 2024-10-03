@@ -8,12 +8,21 @@ class Item:
         self.age = datetime.now() if age is None else datetime(*age)
 
     def get_category(self):
+        """
+        return a string holding the name of the class
+        """
         return self.__class__.__name__
 
     def __str__(self):
+        """
+        stringify an instance of the class id
+        """
         return f"An object of type Item with id {self.id}."
 
     def condition_description(self):
+        """
+        describe the condition in words based on the value, assuming they all range from 0 to 5
+        """
         descriptions = {
             0: "It's basically a wreck. You might want to steer clear of this one.",
             1: "Heavily used. You probably want a glove for this one...",
@@ -22,7 +31,5 @@ class Item:
             4: "Like new! You can hardly tell it’s been used.",
             5: "Mint condition! An absolute treasure."
         }
-
-
         return descriptions.get(self.condition, "Condition unrecognized")
 
