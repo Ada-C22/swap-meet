@@ -43,13 +43,23 @@ class Vendor:
     def get_by_category(self, category="Unknown"):
         return[item for item in self.inventory if item.get_category() == category]
     
+    def get_highest_item(self, list_items, key=lambda x: x):
+        if not list_items:
+            return None
+        
+        highest = list_items[0]
+        for item in list_items:
+            if key(item) > key(highest):
+                highest = item
+        return highest
+    
     def get_best_by_category(self, category):
         items_in_category = self.get_by_category(category)
 
         if not items_in_category:
             return False
 
-        best_item = max(items_in_category, key= lambda item: item.condition)
+        best_item = self.get_highest_item(items_in_category, key= lambda item: item.condition)
         return best_item
 
     def swap_best_by_category(self, other_vendor, my_priority, their_priority):
