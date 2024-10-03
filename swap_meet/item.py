@@ -7,6 +7,7 @@ class Item:
        
         self.condition = condition
         print(self.condition)
+        
     def __str__(self):
         return f"An object of type Item with id {self.id}."
     

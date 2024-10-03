@@ -3,9 +3,6 @@ class Vendor:
     def __init__(self, inventory = None):
         self.inventory = [] if inventory is None else inventory
     
-    def __contains__(self, item):
-        # return self.inventory[0] <= item <= self.inventory[len(self.inventory-1)]
-        return item in self.inventory
         
     def add(self, item):
         self.inventory.append(item)
