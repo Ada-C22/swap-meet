@@ -1,6 +1,14 @@
 class Vendor:
-
+    """
+    A class to represent a vendor, managing the inventory and providing
+    methods for adding, removing, and swapping items between vendors.
+    """
+    
     def __init__(self, inventory=None):
+        """
+        Initializes a Vendor instance with an optional inventory list.
+        If no inventory is provided, an empty list is initialized.
+        """
         self.inventory = inventory or []
 
     def add(self, new_item_added):
@@ -13,8 +21,7 @@ class Vendor:
 
     def remove(self, item_to_remove):
         """
-        Removes the matching item from the
-        `inventory`and returns item
+        Removes the specified item from the `inventory` if it exists and returns item
         """
         if item_to_remove not in self.inventory:
             return False
@@ -24,8 +31,7 @@ class Vendor:
 
     def get_by_id(self, item_id):
         """
-        Check if item id matches an item id in
-        inventory and return item
+        Check if unique item id matches an item id in inventory and return item
         """
         for item in self.inventory:
             if item.id == item_id:
@@ -35,8 +41,7 @@ class Vendor:
 
     def swap_helper(self, other_vendor, my_item, their_item):
         """
-        Helper function that removes `my_item` from this
-        `Vendor`'s inventory, and adds it to the friend's inventory
+        Helper function that removes `my_item` from this `Vendor`'s inventory, and adds it to the friend's inventory
         """
         self.inventory.remove(my_item)
         other_vendor.inventory.append(my_item)
@@ -45,9 +50,8 @@ class Vendor:
 
     def swap_items(self, other_vendor, my_item, their_item):
         """
-        If this `Vendor`'s inventory contain `my_item`
-        or friend's inventory contain `their_item`
-        it swaps.
+        Swaps the specified items between this vendor and another vendor,
+        if both vendors have the specified items in their inventory.
         """
         if my_item in self.inventory and their_item in other_vendor.inventory:
             self.swap_helper(other_vendor, my_item, their_item)
@@ -56,8 +60,8 @@ class Vendor:
 
     def swap_first_item(self, other_vendor):
         """
-        It removes the first item from its `inventory`,
-        and from friend's `inventory` and swaps the two first items
+        Swaps the first item from this vendor's inventory with the first item
+        from another vendor's inventory.
         """
         if len(self.inventory) and len(other_vendor.inventory):
             my_first_item = self.inventory[0]
@@ -68,8 +72,7 @@ class Vendor:
     
     def get_by_category(self, category):
         """
-        returns a list of objects in the inventory
-        with that category provided in argument
+        Retrieves all items in the inventory that match the given category.
         """
         result = []
         for item in self.inventory:
@@ -81,9 +84,7 @@ class Vendor:
 
     def get_best_by_category(self, category):
         """
-        looks through the instance's `inventory`
-        for the item with the highest `condition`
-        and matching `category`
+        Finds the item with the highest `condition`and matching `category`
         """
         items_in_category = self.get_by_category(category)
         if items_in_category:
@@ -95,8 +96,8 @@ class Vendor:
 
     def swap_best_by_category(self, other_vendor, my_priority, their_priority):
         """
-        item in my inventory that matches `their_priority` category is swapped
-        with the best item in `other_vendor`'s inventory that matches `my_priority`
+        Swaps the best item in this vendor's inventory (matching the `their_priority` category)
+        with the best item in the other vendor's inventory (matching the `my_priority` category).
         """
         my_best_item = self.get_best_by_category(their_priority)
         their_best_item = other_vendor.get_best_by_category(my_priority)
@@ -108,7 +109,7 @@ class Vendor:
     # helper function
     def find_newest(self, vendor):
         """
-        Locates newest item by most latest date in each inventory
+        Finds newest item by most latest date(age) in each inventory
         """
         newest_item = vendor.inventory[0]
         for item in vendor.inventory:
@@ -118,7 +119,8 @@ class Vendor:
 
     def swap_by_newest(self, other_vendor):
         """
-        Swaps newest item between self.inventory and other inventory
+        Swaps the newest item from this vendor's inventory with the newest item
+        from another vendor's inventory.
         """
         if self.inventory and other_vendor.inventory:
             my_item = self.find_newest(self)
