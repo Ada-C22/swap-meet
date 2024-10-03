@@ -19,7 +19,7 @@ class Item:
         return f"An object of type Item with id {self.id}."
     
     def condition_description(self):
-      
+
         if self.condition == 5:
             return "Good condition bright and shine"
         elif self.condition == 4:
