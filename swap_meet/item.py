@@ -14,16 +14,18 @@ class Item:
         return (f"An object of type Item with id {self.id}.") 
     
     def condition_description(self):
-        if self.condition_description == 0:
+        if self.condition == 0:
             return "bad"
-        elif self.condition_description == 1:
+        elif self.condition == 1:
             return "so-so"
-        elif self.condition_description == 2:
+        elif self.condition == 2:
             return "as-is"
-        elif self.condition_description == 3:
+        elif self.condition == 3:
             return "ok"
-        elif self.condition_description == 4:
+        elif self.condition == 4:
             return "good"
-        elif self.condition_description == 5:
+        elif self.condition == 5:
             return "excellent"
+        else:
+            return "N/A"
         
