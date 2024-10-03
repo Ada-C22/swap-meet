@@ -44,8 +44,9 @@ class Vendor:
     
     # DRY up code by using swap_items() inside of this method below
     # in swap_first_item()
-    def swap_first_item(self,other_vendor=None ):
+    def swap_first_item(self,other_vendor=None):
         # if either is empty return false
+        
         if not self.inventory or not other_vendor.inventory:
             return False
         
@@ -59,7 +60,8 @@ class Vendor:
         # vendor = my_priority
         if not self.inventory or not other_vendor.inventory:
             return False
-        
+
+
 #### finsh code!!! 
         # swap best item self.inventory with other_vendor.inventory that matches my_priority
         # 
@@ -67,20 +69,25 @@ class Vendor:
     
     def get_by_category(self, category):
         
-        category_objects = [object for object in self.inventory if category ==  object.get_category()]
+        category_objects = [object for object in self.inventory if category == object.get_category()]
         return category_objects
 
        
     
     def get_best_by_category(self, category_best):
 
-    
-            
-            pass
+        category_inventory = self.get_by_category(category_best)
         
-    
+        if not category_inventory:
+            return None
         
-      
+        best_condition_object = category_inventory[0]
+        for object in category_inventory:
+            if object.condition > best_condition_object.condition:
+                best_condition_object = object
+        
+        return best_condition_object
+        
         
         
             
