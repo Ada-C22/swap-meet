@@ -45,7 +45,7 @@ class Vendor:
     
     def get_highest_item(self, list_items, key=lambda x: x):
         if not list_items:
-            return None
+            return False
         
         highest = list_items[0]
         for item in list_items:
@@ -68,12 +68,24 @@ class Vendor:
         
         swap = self.swap_items(other_vendor, other_vendor_priority, personal_priority)
         return swap
+    
+    def get_newest_item(self, list_items, key=lambda x: x):
+        if not list_items:
+            return False
+        
+        newest = list_items[0]
+        for item in list_items:
+            if key(item) < key(newest):
+                newest = item
+        return newest
 
     def swap_by_newest(self, other_vendor):   
         if not self.inventory or not other_vendor.inventory:
             return False
-        my_newest_item = min(self.inventory, key=lambda item: item.age)     
-        other_vendors_newest_item = min(other_vendor.inventory, key=lambda item: item.age)
+        my_newest_item = self.get_newest_item(self.inventory, key=lambda item: item.age)     
+        other_vendors_newest_item = (
+            other_vendor.get_newest_item(other_vendor.inventory, key=lambda item: item.age)
+            )
 
         swap_newest_items = self.swap_items(other_vendor, my_newest_item, other_vendors_newest_item)
         return swap_newest_items
