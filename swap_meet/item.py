@@ -1,8 +1,11 @@
 from uuid import uuid1
+from datetime import datetime
+
 class Item:
-    def __init__(self, id=None, condition=0):
+    def __init__(self, id=None, condition=0, age=None):
         self.id = int(uuid1()) if id is None else id
         self.condition = condition
+        self.age = datetime.now() if age is None else datetime(*age)
 
     def get_category(self):
         return self.__class__.__name__

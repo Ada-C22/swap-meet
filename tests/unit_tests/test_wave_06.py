@@ -4,6 +4,7 @@ from swap_meet.vendor import Vendor
 from swap_meet.clothing import Clothing
 from swap_meet.decor import Decor
 from swap_meet.electronics import Electronics
+from datetime import datetime
 
 # @pytest.mark.skip
 def test_get_items_by_category():
@@ -272,3 +273,39 @@ def test_swap_best_by_category_no_other_match_is_false():
     # - That result is falsy
     # - That tai and jesse's inventories are the correct length
     # - That all the correct items are in tai and jesse's inventories
+
+def test_item_has_valid_age():
+    # Arrange
+    age = (2024,7,8)
+    # Act
+    item = Item(age=age)
+    # Assert
+    assert item.age
+    assert item.age == datetime(*age)
+
+def test_swap_by_newest_valid_truthy():
+    # Arrange
+    item_a = Decor(age=(2024,9,6)) # newest
+    item_b = Electronics(age=(2023,6,6))
+    item_c = Decor(age=(2022,12,6))   
+    tai = Vendor(
+        inventory=[item_c, item_b, item_a]
+    )
+
+    item_d = Clothing(age=(2024,9,1))
+    item_e = Decor(age=(2023,9,6))
+    item_f = Clothing(age=(2024,9,8))   # newest
+    jesse = Vendor(
+        inventory=[item_f, item_e, item_d]
+    )
+    # Act
+    actual = tai.swap_by_newest(jesse)
+    
+    # Assert
+    assert actual
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
+    assert tai.inventory == [item_c, item_b, item_f]
+    assert jesse.inventory == [item_e, item_d,item_a]
+    
+    
