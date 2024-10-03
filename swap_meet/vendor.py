@@ -65,7 +65,7 @@ class Vendor:
        
         for item in self.inventory:
             if item.get_category() == their_priority:
-               if my_best_item is None or item.condition >my_best_item.condition:
+               if my_best_item is None or item.condition > my_best_item.condition:
                    my_best_item=item
         
         for item in other_vendor.inventory:
@@ -73,17 +73,17 @@ class Vendor:
                 if their_best_item is None or item.condition > their_best_item.condition:
                     their_best_item = item
                 
-        if my_best_item and their_best_item:
-            self.inventory.remove(my_best_item)
-            other_vendor.inventory.remove(their_best_item)
-            self.inventory.append(their_best_item)
-            other_vendor.inventory.append(my_best_item)
-            return True
+                
+        # My priority category list:
+            # my_best_item = self.get_best_by_category(my_priority)
+        # my_best_item = self.get_best_by_category(their_priority)
+        # Their priority category list:
+            # their_best_item = self.get_best_by_category(their_priority)
+        # their_best_item = self.get_best_by_category(my_priority)
+        # Swap items by calling the swap_items(other vendor, my best item, their best item) function:
 
-        return False
-                
-                
-                
+        return self.swap_items(other_vendor, my_best_item, their_best_item)
+
       
        
     
