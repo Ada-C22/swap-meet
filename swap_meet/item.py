@@ -7,8 +7,13 @@ class Item:
         self.age = age
     
     def get_category(self):
-        return self.__class__.__name__
-    
+        return self.__class__.__name__ 
+        #The method get_category() defined in the parent class already works correctly for child classes 
+        #because self.__class__.__name__ reflects the class of the instance, not the class where the method is defined.
+        #Python dynamically resolves self.__class__.__name__ at runtime, 
+        #so it always returns the correct class name for the current instance, regardless of where the method is defined.
+
+
     def __str__(self):
         return f"An object of type Item with id {self.id}."
     
