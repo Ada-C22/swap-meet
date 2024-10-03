@@ -10,7 +10,6 @@ class Item:
 #      which will return a string holding the name of the class
 
     def get_category(self):
-        print("line 14 met")
         class_category = type(self).__name__
         
         print("class category here -----------", class_category)
@@ -18,7 +17,6 @@ class Item:
         #returns string holding name of class 
     
     def __str__(self):
-        print("str called")
         category = self.get_category()
         print("category is :", category)
         str_id= str(self.id)
