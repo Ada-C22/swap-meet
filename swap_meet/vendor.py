@@ -57,6 +57,43 @@ class Vendor:
         return True
     
 
-                    # Wave_5
-            
+                    # Wave_6
+    def get_by_category(self, category):
+        list_of_objects = []
+        for item in self.inventory:
+            if category == item.get_category():
+                list_of_objects.append(item)
+        return list_of_objects
+        
+
+    def get_best_by_category(self, category):
+        if not self.get_by_category(category):
+            return None
+        
+        best_item = self.get_by_category(category)[0]
+        for item in self.get_by_category(category):
+            if item.condition > best_item.condition:
+                best_item = item
+        return best_item
+    
+    def swap_best_by_category(self, other_vendor, my_priority, their_priority):
+    # other_vendor, which represents another Vendor instance to trade with
+    # my_priority, which represents a category that the Vendor wants to receive
+    # their_priority, which represents a category that other_vendor wants to receive
+    # if  xxxx or xxxx, return False
+        # if not self.inventory or other_vendor.inventory:
+        #     return self.inventory and other_vendor.inventory
+        if self.inventory and other_vendor.inventory: 
+            my_best_item = self.get_best_by_category(their_priority)
+            their_best_item = other_vendor.get_best_by_category(my_priority)
+            if (my_best_item and their_best_item) and my_best_item.get_category() == their_priority and their_best_item.get_category() == my_priority:
+                other_vendor.add(my_best_item)
+                self.remove(my_best_item)
+                self.add(their_best_item)
+                other_vendor.remove(their_best_item)
+                return True
+        return False
+
+
+
 
