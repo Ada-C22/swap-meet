@@ -77,22 +77,21 @@ class Vendor:
         return best_item
     
     def swap_best_by_category(self, other_vendor, my_priority, their_priority):
-    # other_vendor, which represents another Vendor instance to trade with
-    # my_priority, which represents a category that the Vendor wants to receive
-    # their_priority, which represents a category that other_vendor wants to receive
-    # if  xxxx or xxxx, return False
-        # if not self.inventory or other_vendor.inventory:
-        #     return self.inventory and other_vendor.inventory
-        if self.inventory and other_vendor.inventory: 
-            my_best_item = self.get_best_by_category(their_priority)
-            their_best_item = other_vendor.get_best_by_category(my_priority)
-            if (my_best_item and their_best_item) and my_best_item.get_category() == their_priority and their_best_item.get_category() == my_priority:
-                other_vendor.add(my_best_item)
-                self.remove(my_best_item)
-                self.add(their_best_item)
-                other_vendor.remove(their_best_item)
-                return True
-        return False
+        if not self.inventory or not other_vendor.inventory: 
+            return False
+
+        my_best_item = self.get_best_by_category(their_priority)
+        their_best_item = other_vendor.get_best_by_category(my_priority)
+        if not my_best_item or not their_best_item:
+            return False
+        
+        if my_best_item.get_category() == their_priority and their_best_item.get_category() == my_priority:
+            other_vendor.add(my_best_item)
+            self.remove(my_best_item)
+            self.add(their_best_item)
+            other_vendor.remove(their_best_item)
+            return True
+
 
 
 
