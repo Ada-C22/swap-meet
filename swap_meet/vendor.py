@@ -44,7 +44,6 @@ class Vendor:
         for item in self.inventory:
             if item.get_category() == category:
                 items_in_category.append(item)
-
         return items_in_category
 
     def get_best_by_category(self, category):
@@ -63,9 +62,7 @@ class Vendor:
 
         return self.swap_items(other_vendor, my_best, their_best)
 
-    # optional
-    # swap the newest from my_vendor and other_vendor given desired category
-    #Jen's implementation
+    # Optional enhancements
     def get_newest(self):
         newest_item = None
         for item in self.inventory:
