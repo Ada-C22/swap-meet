@@ -2,12 +2,15 @@ import uuid
 
 class Item:
     # wave 2
-    def __init__(self, id=None, condition=0):
+    def __init__(self, id=None, condition=0, age=0):
         if id is None:
             self.id = int(uuid.uuid4())
         else:
             self.id = id
         self.condition = condition
+        
+        # Optional enhancement
+        self.age = age
         
     def get_category(self):
         return self.__class__.__name__
