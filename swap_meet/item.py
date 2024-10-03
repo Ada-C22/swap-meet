@@ -32,11 +32,3 @@ class Item:
             return "Still good"
         else:
             return "Not a good condition"
-
-        
-
-
-    
-
-# item_a = Item(id=12345)
-# print(str(item_a))
