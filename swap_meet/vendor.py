@@ -66,3 +66,19 @@ class Vendor:
             self.swap_helper(other_vendor, my_best_item, their_best_item)
             return True
         return False
+    
+    # helper function
+    def find_newest(self, vendor):
+        newest_item = vendor.inventory[0]
+        for item in vendor.inventory:
+            if item.age > newest_item.age:
+                newest_item = item
+        return newest_item
+
+    def swap_by_newest(self, other_vendor):
+        if self.inventory and other_vendor.inventory:
+            my_item = self.find_newest(self)
+            their_item = self.find_newest(other_vendor)
+            self.swap_helper(other_vendor, my_item, their_item)
+            return True
+        return False
