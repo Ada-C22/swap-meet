@@ -1,11 +1,10 @@
 import uuid
 
 class Item:
-    def __init__(self,id=None, condition=0):
-        if id == None:
-            id = uuid.uuid4().int
-        self.id = id
+    def __init__(self,id=None, condition=0, age=0):
+        self.id = id if id is not None else uuid.uuid4().int
         self.condition = condition
+        self.age = age
     
     def get_category(self):
         return self.__class__.__name__
@@ -26,4 +25,6 @@ class Item:
             return "Like New"
         elif self.condition == 5:
             return "New, In Box"
-        
+    
+
+
