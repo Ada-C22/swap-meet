@@ -11,6 +11,7 @@ class Item:
         return self.__class__.__name__
 
     def __str__(self):
+
         return f"An object of type Item with id {self.id}."
 
     def condition_description(self):
@@ -22,7 +23,5 @@ class Item:
             4: "Like new! You can hardly tell it’s been used.",
             5: "Mint condition! An absolute treasure."
         }
-
-
         return descriptions.get(self.condition, "Condition unrecognized")
 
