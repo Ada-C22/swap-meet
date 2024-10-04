@@ -47,7 +47,6 @@ class Vendor:
             return True
 
     def get_by_category(self, category):
-    #self.inventory = inventory if inventory else []
         new_list = []
         for item in self.inventory:
             if item.get_category() == category:
@@ -77,9 +76,9 @@ class Vendor:
         their_best_item = other_vendor.get_best_by_category(my_priority)
         if my_best_item is None or their_best_item is None:
             return False
-        #self.swap_first_item(my_best_item)
-        result = my_best_item.swap(their_best_item)
-        return result
-        
-
-
+        else:
+            self.remove(my_best_item)
+            other_vendor.remove(their_best_item)
+            self.add(their_best_item)
+            other_vendor.add(my_best_item)
+            return True
