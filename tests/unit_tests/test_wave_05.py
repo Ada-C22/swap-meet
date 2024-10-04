@@ -21,8 +21,8 @@ def test_clothing_has_expected_category_and_custom_id():
 def test_clothing_has_expected_default_to_str():
     clothing = Clothing(id=TEST_CUSTOM_ID)
     expected_str = (
-        f"An object of type Clothing with id {TEST_CUSTOM_ID}. "
-        "It is made from Unknown fabric."
+        f"An object of type Clothing with id {TEST_CUSTOM_ID}."\
+        f"It is made from Unknown fabric."
     )
     assert str(clothing).startswith(expected_str)
 
