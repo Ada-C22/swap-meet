@@ -13,8 +13,13 @@ class Item:
         return f"An object of type Item with id {self.id}."
     
     def condition_description(self):
-        conditional_phrases = ["yikes", "noth worth it", "it could work", "just a scratch",
-                                "almost new", "as good as it gets"]
+        conditional_phrases = [
+            "yikes", "not worth it", 
+            "it could work", 
+            "just a scratch",
+            "almost new", 
+            "as good as it gets"
+            ]
         return conditional_phrases[self.condition]
     
     
