@@ -5,6 +5,24 @@ from swap_meet.clothing import Clothing
 from swap_meet.decor import Decor
 from swap_meet.electronics import Electronics
 
+def test_item_invalid_id():
+    try:
+        Item(id="invalid_id")
+    except ValueError as e:
+        assert str(e) == "id=invalid_id, expected int"
+    else:
+        pytest.fail("ValueError was not raised for an invalid id")
+
+
+def test_item_invalid_condition():
+    try:
+        Item(id=1, condition="bad_condition")
+    except ValueError as e:
+        assert str(e) == "condition=1, expected number"
+    else:
+        pytest.fail("ValueError was not raised for an invalid condition")
+
+
 def test_condition_description():
     item_a = Clothing(condition=5)
     item_b = Electronics(condition=4.2)
@@ -397,18 +415,3 @@ def test_swap_by_newest_items_same_age_with_category():
     for item in jesse.inventory:
         assert item.age == pytest.approx(2.5)
   
-def test_item_invalid_id():
-    try:
-        Item(id="invalid_id")
-    except ValueError as e:
-        assert str(e) == "id=invalid_id, expected int"
-    else:
-        pytest.fail("ValueError was not raised for an invalid id")
-
-def test_item_invalid_condition():
-    try:
-        Item(id=1, condition="bad_condition")
-    except ValueError as e:
-        assert str(e) == "condition=1, expected number"
-    else:
-        pytest.fail("ValueError was not raised for an invalid condition")
