@@ -3,7 +3,7 @@ class Vendor:
     A class to represent a vendor, managing the inventory and providing
     methods for adding, removing, and swapping items between vendors.
     """
-    
+
     def __init__(self, inventory=None):
         """
         Initializes a Vendor instance with an optional inventory list.
@@ -36,17 +36,6 @@ class Vendor:
         for item in self.inventory:
             if item.id == item_id:
                 return item
-        # result = next(filter(lambda item: item.id == item_id, self.inventory), None)
-        # return result
-
-    def swap_helper(self, other_vendor, my_item, their_item):
-        """
-        Helper function that removes `my_item` from this `Vendor`'s inventory, and adds it to the friend's inventory
-        """
-        self.inventory.remove(my_item)
-        other_vendor.inventory.append(my_item)
-        other_vendor.inventory.remove(their_item)
-        self.inventory.append(their_item)
 
     def swap_items(self, other_vendor, my_item, their_item):
         """
@@ -54,7 +43,10 @@ class Vendor:
         if both vendors have the specified items in their inventory.
         """
         if my_item in self.inventory and their_item in other_vendor.inventory:
-            self.swap_helper(other_vendor, my_item, their_item)
+            self.inventory.remove(my_item)
+            other_vendor.inventory.append(my_item)
+            other_vendor.inventory.remove(their_item)
+            self.inventory.append(their_item)
             return True
         return False
 
@@ -66,10 +58,8 @@ class Vendor:
         if len(self.inventory) and len(other_vendor.inventory):
             my_first_item = self.inventory[0]
             their_first_item = other_vendor.inventory[0]
-            self.swap_helper(other_vendor, my_first_item, their_first_item)
-            return True
-        return False
-    
+            return self.swap_items(other_vendor, my_first_item, their_first_item)
+
     def get_by_category(self, category):
         """
         Retrieves all items in the inventory that match the given category.
@@ -79,8 +69,6 @@ class Vendor:
             if item.get_category() == category.capitalize():
                 result.append(item)
         return result
-        # result = list(filter(lambda item: item.get_category() == category.capitalize(), self.inventory))
-        # return result
 
     def get_best_by_category(self, category):
         """
@@ -102,11 +90,8 @@ class Vendor:
         my_best_item = self.get_best_by_category(their_priority)
         their_best_item = other_vendor.get_best_by_category(my_priority)
         if my_best_item and their_best_item:
-            self.swap_helper(other_vendor, my_best_item, their_best_item)
-            return True
-        return False
-    
-    # helper function
+            return self.swap_items(other_vendor, my_best_item, their_best_item)
+
     def find_newest(self, vendor):
         """
         Finds newest item by most latest date(age) in each inventory
@@ -125,6 +110,4 @@ class Vendor:
         if self.inventory and other_vendor.inventory:
             my_item = self.find_newest(self)
             their_item = self.find_newest(other_vendor)
-            self.swap_helper(other_vendor, my_item, their_item)
-            return True
-        return False
+            return self.swap_items(other_vendor, my_item, their_item)
