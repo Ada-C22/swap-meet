@@ -26,7 +26,7 @@ class Clothing(Item):
 
 
     def __str__(self) -> str:
-        str_to_print = f"An object of type Clothing with id {self.id}." \
+        str_to_print = f"An object of type Clothing with id {self.id}."\
                         f"It is made from {self.fabric} fabric."\
                         f"It was prodused on {self.age.strftime('%x')}"
         return str_to_print
