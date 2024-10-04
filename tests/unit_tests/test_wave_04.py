@@ -19,6 +19,7 @@ def test_swap_first_item_returns_true():
 
     result = fatimah.swap_first_item(jolie)
 
+
     assert len(fatimah.inventory) == 3
     assert item_a not in fatimah.inventory
     assert item_b in fatimah.inventory

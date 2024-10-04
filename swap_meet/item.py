@@ -30,3 +30,5 @@ class Item:
             return "Feeling young and confident yet still slightly jaded about the world"
         elif self.condition == 5: 
             return "Fresh as a daisy on a dewey spring morning"
+        else : 
+            return "unknown condition"
