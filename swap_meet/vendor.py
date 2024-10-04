@@ -45,9 +45,10 @@ class Vendor:
     #Wave 6
     def get_by_category(self, category):
         items = []
-        for item in self.inventory:
-            if item.get_category() is category:
-                items.append(item)
+        items = [item for item in self.inventory if item.get_category() is category]
+        # for item in self.inventory:
+        #     if item.get_category() is category:
+        #         items.append(item)
         return items
     
     def get_best_by_category(self, category):
