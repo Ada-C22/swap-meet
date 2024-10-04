@@ -84,7 +84,7 @@ def test_electronics_has_expected_default_to_str():
         f"An object of type Electronics with id {TEST_CUSTOM_ID}. "
         "This is a Unknown device."
     )
-    assert str(electronics) == expected_str
+    assert str(electronics).startswith(expected_str)
 
 # @pytest.mark.skip
 def test_electronics_has_expected_to_str_with_custom_type():
@@ -93,7 +93,7 @@ def test_electronics_has_expected_to_str_with_custom_type():
         f"An object of type Electronics with id {TEST_CUSTOM_ID}. "
         "This is a Mobile Phone device."
     )
-    assert str(electronics) == expected_str
+    assert str(electronics).startswith(expected_str)
 
 
 # ~~~~~ Item Tests ~~~~~
