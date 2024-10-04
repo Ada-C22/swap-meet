@@ -3,6 +3,10 @@ import uuid
 
 class Item:
     def __init__(self, id=None, condition=0, age=0):
+        if id is not None and not isinstance(id, int):
+            raise ValueError(f"id={id}, expected int")
+        if not isinstance(condition, int) and not isinstance(condition, float):
+            raise ValueError(f"condition={id}, expected number")
         self.id = uuid.uuid4().int if not id else id
         self.condition = condition
         self.age = age
