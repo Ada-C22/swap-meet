@@ -1,4 +1,4 @@
-# Swap Meet
+## Swap Meet
 
 ## Skills Assessed
 
@@ -114,6 +114,8 @@ The remaining tests in wave 3 imply:
   - The method removes `their_item` from the other `Vendor`'s inventory, and adds it to this `Vendor`'s inventory
   - The method returns `True`
   - If this `Vendor`'s inventory doesn't contain `my_item` or the friend's inventory doesn't contain `their_item`, the method returns `False`
+
+
 
 ### Wave 4
 
