@@ -62,13 +62,40 @@ def test_get_newest_no_category():
     assert tai_newest.age == pytest.approx(2.0)
     assert jesse_newest.age == pytest.approx(5.5)
 
+def test_get_newest_items_same_age():
+    item_a = Decor(age=2.5)
+    item_b = Electronics(age=2.5)
+    item_c = Decor(age=2.5)
+    tai = Vendor(inventory=[item_a, item_b, item_c])
+    item_d = Clothing(age=2.5)
+    item_e = Decor(age=2.5)
+    item_f = Clothing(age=2.5)
+    jesse = Vendor(inventory=[item_d, item_e, item_f])
+
+    tai_newest = tai.get_newest()
+    tai_newest_with_category = tai.get_newest("Electronics")
+    jesse_newest = jesse.get_newest()
+    jesse_newest_with_category = jesse.get_newest("Decor")
+
+    assert tai_newest == item_a
+    assert tai_newest_with_category == item_b
+    assert jesse_newest == item_d
+    assert jesse_newest_with_category == item_e
+    assert tai.inventory == [item_a, item_b, item_c]
+    assert jesse.inventory == [item_d, item_e, item_f]
+
+    for item in tai.inventory:
+        assert item.age == pytest.approx(2.5)
+    for item in jesse.inventory:
+        assert item.age == pytest.approx(2.5)
+
 def test_get_newest_no_inventory():
     vendor = Vendor()
 
     result = vendor.get_newest("Electronics")
 
     assert not result
-    assert result == None
+    assert len(vendor.inventory) == 0
 
 def test_get_newest_item_no_matching_category():
     item_a = Clothing()
@@ -81,7 +108,7 @@ def test_get_newest_item_no_matching_category():
     result = vendor.get_newest("Electronics")
 
     assert not result
-    assert result == None
+    assert len(vendor.inventory) == 3
 
 def test_swap_by_newest_with_category():
     item_a = Decor(age=2.5)
@@ -140,6 +167,40 @@ def test_swap_by_newest_no_category():
     assert item_c in jesse.inventory
     assert item_c not in tai.inventory
     assert item_e not in jesse.inventory
+    assert item_a.age == pytest.approx(2.5)
+    assert item_b.age == pytest.approx(3.0)
+    assert item_c.age == pytest.approx(2.0)
+    assert item_d.age == pytest.approx(10.5)
+    assert item_e.age == pytest.approx(5.5)
+    assert item_f.age == pytest.approx(12.0)
+
+def test_swap_by_newest_reordered_with_category():
+    item_a = Decor(age=2.5)
+    item_b = Electronics(age=3.0)
+    item_c = Decor(age=2.0)
+    tai = Vendor(inventory=[item_c, item_b, item_a])
+    item_d = Clothing(age=10.5)
+    item_e = Decor(age=5.5)
+    item_f = Clothing(age=12.0)
+    jesse = Vendor(inventory=[item_e, item_f, item_d])
+
+    result = tai.swap_by_newest(
+        other_vendor=jesse,
+        my_priority="Clothing",
+        their_priority="Decor"
+    )
+
+    assert result
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
+    assert item_a in tai.inventory
+    assert item_b in tai.inventory
+    assert item_d in tai.inventory
+    assert item_e in jesse.inventory
+    assert item_f in jesse.inventory
+    assert item_c in jesse.inventory
+    assert item_c not in tai.inventory
+    assert item_d not in jesse.inventory
     assert item_a.age == pytest.approx(2.5)
     assert item_b.age == pytest.approx(3.0)
     assert item_c.age == pytest.approx(2.0)
@@ -214,6 +275,28 @@ def test_swap_by_newest_no_other_inventory_is_false():
     assert item_b.age == pytest.approx(3.0)
     assert item_c.age == pytest.approx(2.0)
 
+def test_swap_by_newest_no_other_inventory_is_false_with_category():
+    item_a = Decor(age=2.5)
+    item_b = Electronics(age=3.0)
+    item_c = Decor(age=2.0)
+    tai = Vendor(inventory=[item_a, item_b, item_c])
+    jesse = Vendor(inventory=[])
+
+    result = tai.swap_by_newest(
+        other_vendor=jesse,
+        my_priority="Clothing",
+        their_priority="Decor"
+    )
+    assert not result
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 0
+    assert item_a in tai.inventory
+    assert item_b in tai.inventory
+    assert item_c in tai.inventory
+    assert item_a.age == pytest.approx(2.5)
+    assert item_b.age == pytest.approx(3.0)
+    assert item_c.age == pytest.approx(2.0)
+
 def test_swap_by_newest_no_other_inventory_is_false_with_my_priority():
     item_a = Decor(age=2.5)
     item_b = Electronics(age=3.0)
@@ -240,30 +323,8 @@ def test_swap_by_newest_no_other_inventory_is_false_with_their_priority():
     tai = Vendor(inventory=[item_a, item_b, item_c])
     jesse = Vendor(inventory=[])
 
-    result = tai.swap_by_newest(other_vendor=jesse, their_priority="Clothing")
+    result = tai.swap_by_newest(other_vendor=jesse, their_priority="Decor")
 
-    assert not result
-    assert len(tai.inventory) == 3
-    assert len(jesse.inventory) == 0
-    assert item_a in tai.inventory
-    assert item_b in tai.inventory
-    assert item_c in tai.inventory
-    assert item_a.age == pytest.approx(2.5)
-    assert item_b.age == pytest.approx(3.0)
-    assert item_c.age == pytest.approx(2.0)
-
-def test_swap_by_newest_no_other_inventory_is_false_with_category():
-    item_a = Decor(age=2.5)
-    item_b = Electronics(age=3.0)
-    item_c = Decor(age=2.0)
-    tai = Vendor(inventory=[item_a, item_b, item_c])
-    jesse = Vendor(inventory=[])
-
-    result = tai.swap_by_newest(
-        other_vendor=jesse,
-        my_priority="Clothing",
-        their_priority="Decor"
-    )
     assert not result
     assert len(tai.inventory) == 3
     assert len(jesse.inventory) == 0
@@ -315,21 +376,21 @@ def test_swap_by_newest_items_same_age_with_category():
 
     result = tai.swap_by_newest(
         other_vendor=jesse,
-        my_priority="Clothing",
-        their_priority="Decor"
+        my_priority="Decor",
+        their_priority="Electronics"
     )
 
     assert result
     assert len(tai.inventory) == 3
     assert len(jesse.inventory) == 3
-    assert item_b in tai.inventory
+    assert item_a in tai.inventory
     assert item_c in tai.inventory
-    assert item_d in tai.inventory
-    assert item_e in jesse.inventory
+    assert item_e in tai.inventory
+    assert item_d in jesse.inventory
     assert item_f in jesse.inventory
-    assert item_a in jesse.inventory
-    assert item_a not in tai.inventory
-    assert item_d not in jesse.inventory
+    assert item_b in jesse.inventory
+    assert item_b not in tai.inventory
+    assert item_e not in jesse.inventory
 
     for item in tai.inventory:
         assert item.age == pytest.approx(2.5)
