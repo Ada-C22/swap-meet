@@ -114,6 +114,10 @@ def test_swap_best_by_category():
     )
     assert item_f in tai.inventory
     assert item_c in jesse.inventory
+    assert result is True 
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
+
     
     #raise Exception("Complete this test according to comments below.")
     # *********************************************************************
@@ -149,6 +153,11 @@ def test_swap_best_by_category_reordered():
     )
     assert item_f in tai.inventory
     assert item_c in jesse.inventory
+    assert result is True
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
+    assert item_f not in jesse.inventory
+    assert item_c not in tai.inventory  
 
     #raise Exception("Complete this test according to comments below.")
     # *********************************************************************
@@ -240,6 +249,9 @@ def test_swap_best_by_category_no_match_is_false():
     assert item_d in jesse.inventory
     assert item_e in jesse.inventory
     assert item_f in jesse.inventory
+    assert result is False
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
     #raise Exception("Complete this test according to comments below.")
     # *********************************************************************
     # ****** Complete Assert Portion of this test **********
@@ -278,7 +290,10 @@ def test_swap_best_by_category_no_other_match_is_false():
     assert item_d in jesse.inventory
     assert item_e in jesse.inventory
     assert item_f in jesse.inventory
-    
+    assert result is False
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
+
     #raise Exception("Complete this test according to comments below.")
     # *********************************************************************
     # ****** Complete Assert Portion of this test **********
