@@ -30,8 +30,12 @@ def test_swap_by_newest_returns_false_if_no_items_in_other_vendor():
     item_a = Item(age= 45)
     item_d = Item(age= 10)
 
-    vendor1 = Vendor(inventory=[item_a, item_d])
-    vendor2 = Vendor(inventory=[])
+    vendor1 = Vendor(
+        inventory=[item_a, item_d]
+        )
+    vendor2 = Vendor(
+        inventory=[]
+        )
     #act    
     result = vendor1.swap_by_newest(vendor2)
     
@@ -48,8 +52,12 @@ def test_swap_by_newest_returns_false_if_no_items_in_vendor():
     item_a = Item(age= 45)
     item_d = Item(age= 10)
 
-    vendor1 = Vendor(inventory=[])
-    vendor2 = Vendor(inventory=[item_a, item_d])
+    vendor1 = Vendor(
+        inventory=[]
+        )
+    vendor2 = Vendor(
+        inventory=[item_a, item_d]
+        )
     
     #act    
     result = vendor1.swap_by_newest(vendor2)
