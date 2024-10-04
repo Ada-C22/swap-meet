@@ -49,7 +49,9 @@ Review the [code coverage exercise](https://github.com/adaGold/code-coverage-exe
 
 ## Project Directions
 
-This project is designed such that one could puzzle together how to implement this project without many directions. Being able to use tests to drive project completion is a skill that needs to be developed; programmers often take years to develop this skill competently.
+This project is designed such that one could puzzle together how to implement this project without many directions. 
+Being able to use tests to drive project completion is a skill that needs to be developed; programmers often take 
+years to develop this skill competently.
 
 When our test failures leave us confused and stuck, let's use the detailed project requirements below.
 
@@ -82,25 +84,37 @@ In Wave 2 we will create the `Item` class and the `Vendor` class' `get_by_id` me
 
 - Inside this module, there is a class named `Item`
 - Each `Item` will have an attribute named `id`, which is a unique integer by default
-  - There are many ways to generate numbers, but generating numbers without duplicates takes some care. Happily, Python has a package called `uuid` that can help!
-    - If we import the [`uuid` package](https://docs.python.org/3/library/uuid.html) in `item.py`, with a little research we can use one of the functions `uuid` provides to create large ***unique*** numbers meant to be used as identifiers
-    - Specifically, you'll need to choose which of the `uuid` package's functions to use, so be sure to consider which function will work best for creating a unique integer
-    - Note that this package's functions return `UUID` objects, not integers as such, **but** `UUID` objects have [an attribute `int`](https://docs.python.org/3/library/uuid.html#uuid.UUID.int) which allow us to access their value as an integer
-- When we initialize an instance of `Item`, we can optionally pass in an integer with the keyword argument `id` to manually set the `Item`'s `id`
-- Each `Item` will have a function named `get_category`, which will return a string holding the name of the class
+  - There are many ways to generate numbers, but generating numbers without duplicates takes some care. Happily, 
+  Python has a package called `uuid` that can help!
+    - If we import the [`uuid` package](https://docs.python.org/3/library/uuid.html) in `item.py`, with a little research we can use one of the functions `uuid`
+    provides to create large ***unique*** numbers meant to be used as identifiers
+    - Specifically, you'll need to choose which of the `uuid` package's functions to use, so be sure to consider which 
+    function will work best for creating a unique integer
+    - Note that this package's functions return `UUID` objects, not integers as such, **but** `UUID` objects have 
+    [an attribute `int`](https://docs.python.org/3/library/uuid.html#uuid.UUID.int) which allow us to access their value as an integer
+- When we initialize an instance of `Item`, we can optionally pass in an integer with the keyword argument `id` 
+to manually set the `Item`'s `id`
+- Each `Item` will have a function named `get_category`, which will return a string 
+holding the name of the class
 
 - Instances of `Vendor` have an instance method named `get_by_id`
   - This method takes one argument: an integer, representing an `Item`'s `id`
   - This method returns the item with a matching `id` from the inventory
-  - If there is no matching item in the `inventory`, the method should explicitly return `None`
+  - If there is no matching item in the `inventory`, the method should explicitly 
+  return `None`
 
 ### Wave 3
 
 In Wave 3 we will write a method to stringify (convert to a string) an `Item` using `str()` and write the method `swap_items`.
 
-- When we stringify an instance of `Item` using `str()`, it returns `"An object of type Item with id <id value>."`, where `<id value>` is the `id` of the `Item` instance that `str()` was called on.
-  - For example, if we had an `Item` instance `item_a = Item(id=12345)`, the output of `str(item_a)` should be `"An object of type Item with id 12345."`.
-  - To accomplish this, you'll want to investigate what calling `str()` on a class instance does and how you can override such a method. This type of overriding is known as "operator overloading", put simply, it means that the same method exhibits different behavior across instances of different classes. A simple example would be something like `+` which for strings means "concatenate" but for numbers, means "add", or for lists, means "combine".
+- When we stringify an instance of `Item` using `str()`, it returns `"An object of type Item with id <id value>."`, 
+where `<id value>` is the `id` of the `Item` instance that `str()` was called on.
+  - For example, if we had an `Item` instance `item_a = Item(id=12345)`, the output of `str(item_a)` should be 
+  `"An object of type Item with id 12345."`.
+  - To accomplish this, you'll want to investigate what calling `str()` on a class instance does and how you can override 
+  - such a method. This type of overriding is known as "operator overloading", put simply, 
+  it means that the same method exhibits different behavior across instances of different classes. 
+  A simple example would be something like `+` which for strings means "concatenate" but for numbers, means "add", or for lists, means "combine".
 
 The remaining tests in wave 3 imply:
 
@@ -113,7 +127,8 @@ The remaining tests in wave 3 imply:
   - The method removes `my_item` from this `Vendor`'s inventory, and adds it to the friend's inventory
   - The method removes `their_item` from the other `Vendor`'s inventory, and adds it to this `Vendor`'s inventory
   - The method returns `True`
-  - If this `Vendor`'s inventory doesn't contain `my_item` or the friend's inventory doesn't contain `their_item`, the method returns `False`
+  - If this `Vendor`'s inventory doesn't contain `my_item` or the friend's inventory doesn't contain `their_item`,
+  the method returns `False`
 
 ### Wave 4
 
@@ -129,47 +144,75 @@ In Wave 4 we will write one method, `swap_first_item`.
 
 ### Wave 5
 
-In Wave 5 we will create three additional modules with three additional classes.
+In Wave 5 we will create three additional modules with three additional 
+classes.
 
 Our new modules should be defined as follows:
 - `Clothing`
   - Has an attribute `id` that is by default a unique integer
   - Has an attribute `fabric` that is by default the string "Unknown"
-    - This attribute describes what fabric the clothing is made from; some example values might be `"Striped"`, `"Cotton"`, or `"Floral"`
-    - When we instantiate an instance of `Clothing`, we can optionally pass in a string with the keyword argument `fabric`
+    - This attribute describes what fabric the clothing is made from; 
+    some example values might be `"Striped"`, `"Cotton"`, or `"Floral"`
+    - When we instantiate an instance of `Clothing`, we can optionally 
+    pass in a string with the keyword argument `fabric`
   - Has a function `get_category` that returns `"Clothing"`
-  - Has a stringify method that returns `"An object of type Clothing with id <id value>. It is made from <fabric value> fabric."`
-    - For example, if we had a `Clothing` instance with an `id` of `123435` and a `fabric` attribute that holds `"Wool"`, its stringify method should return `"An object of type Clothing with id 12345. It is made from Wool fabric."`
+  - Has a stringify method that returns `"An object of type Clothing 
+  with id <id value>. It is made from <fabric value> fabric."`
+    - For example, if we had a `Clothing` instance with an `id` 
+    of `123435` and a `fabric` attribute that holds `"Wool"`, 
+    its stringify method should return `"An object of type Clothing 
+    with id 12345. It is made from Wool fabric."`
 - `Decor`
   - Has an attribute `id` that is by default a unique integer
   - Holds 2 integer attributes `width` and `length`
     - Both of these values should be 0 by default
-    - When we instantiate an instance of `Decor`, we can optionally pass in integers with the keyword arguments `width` and `length`
+    - When we instantiate an instance of `Decor`, we can optionally 
+    pass in integers with the keyword arguments `width` and `length`
   - Has a function `get_category` that returns `"Decor"`
-  - Has a stringify method that returns `"An object of type Decor with id <id value>. It takes up a <width value> by <length value> sized space."`
+  - Has a stringify method that returns
+  - `"An object of type Decor with id <id value>. It takes up a <width value> by <length value> sized space."`
     - For example, if we had a `Decor` instance with an `id` of `123435`, `width` of `3`, and `length` of `7`, its stringify method should return `"An object of type Decor with id 12345. It takes up a 3 by 7 sized space."`
 - `Electronics`
   - Has an attribute `id` that is by default a unique integer
   - Has an attribute `type` that is by default the string "Unknown"
-    - This attribute describes what kind of electronic device this is. Some example values might be `“Kitchen Appliance”`, `“Game Console”`, or `“Health Tracker”`
-    - When we initialize an instance of `Electronics`, we can optionally pass in a string with the keyword argument `type`
+    - This attribute describes what kind of electronic device this is. 
+    Some example values might be `“Kitchen Appliance”`, `“Game Console”`, 
+    or `“Health Tracker”`
+    - When we initialize an instance of `Electronics`, we can optionally 
+    pass in a string with the keyword argument `type`
   - Has an function `get_category` that returns `"Electronics"`
-  - Has a stringify method that returns `"An object of type Electronics with id <id value>. This is a <type value> device."`
-    - For example, if we had an `Electronics` instance with an `id` of `123435` and `type` attribute of `"Mobile Phone"`, its stringify method should return `"An object of type Electronics with id 12345. This is a Mobile Phone device."`
+  - Has a stringify method that returns `"An object of type Electronics 
+  with id <id value>. This is a <type value> device."`
+    - For example, if we had an `Electronics` instance with an `id` 
+    of `123435` and `type` attribute of `"Mobile Phone"`, its stringify method should return `"An object of type Electronics with id 12345. This is a Mobile Phone device."`
 
-- All three new classes and the `Item` class have an attribute called `condition`, which can be optionally provided in the initializer. The default value should be `0`
+- All three new classes and the `Item` class have an attribute 
+called `condition`, which can be optionally provided in the initializer. 
+The default value should be `0`
 
-- All three new classes and the `Item` class have an instance method named `condition_description`, which should describe the condition in words based on the value, assuming they all range from 0 to 5.
-  - These can be basic descriptions (eg. 'mint', 'heavily used') but feel free to have fun with these (e.g. 'You probably want a glove for this one...").
-  - The one requirement is that all the classes share the same `condition_description` behavior.
+- All three new classes and the `Item` class have an instance method 
+named `condition_description`, which should describe the condition in 
+words based on the value, assuming they all range from 0 to 5.
+  - These can be basic descriptions (eg. 'mint', 'heavily used') 
+  but feel free to have fun with these (e.g. 'You probably want 
+  a glove for this one...").
+  - The one requirement is that all the classes share 
+  the same `condition_description` behavior.
 
 #### Using Inheritance
 
-Now, we may notice that these three classes hold the same types of state and have the same general behavior as `Item`. That makes this is a great opportunity to use inheritance! If you haven't already, go back and implement the `Clothing`, `Decor`, and `Electronics` classes so that they inherit from the `Item` class. This should eliminate repetition in your code and greatly reduce the total number of lines code in your program!
+Now, we may notice that these three classes hold the same 
+types of state and have the same general behavior as `Item`. 
+That makes this is a great opportunity to use inheritance! 
+If you haven't already, go back and implement the `Clothing`, 
+`Decor`, and `Electronics` classes so that they inherit from 
+the `Item` class. This should eliminate repetition in your code 
+and greatly reduce the total number of lines code in your program!
 
 ##### Tip: Importing Item
 
-You'll need to refer to `Item` in order to declare it as a parent. To reference the `Item` class from these modules, try this import line:
+You'll need to refer to `Item` in order to declare it as a parent. 
+To reference the `Item` class from these modules, try this import line:
 
 ```python
 from swap_meet.item import Item
