@@ -56,8 +56,7 @@ class Vendor:
 
         return self.swap_items(other_vendor, my_best, their_best)
 
-    # Optional enhancements
-    # Swap the newest item from my_vendor and other_vendor, optionally by category
+    # Optional enhancements to swap newest items, optionally by category
     def get_newest(self, category=None):
         newest_item = None
         items = self.inventory if not category else self.get_by_category(category)

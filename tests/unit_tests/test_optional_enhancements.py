@@ -13,7 +13,6 @@ def test_item_invalid_id():
     else:
         pytest.fail("ValueError was not raised for an invalid id")
 
-
 def test_item_invalid_condition():
     try:
         Item(id=1, condition="bad_condition")
@@ -21,7 +20,6 @@ def test_item_invalid_condition():
         assert str(e) == "condition=1, expected number"
     else:
         pytest.fail("ValueError was not raised for an invalid condition")
-
 
 def test_condition_description():
     item_a = Clothing(condition=5)
@@ -414,4 +412,3 @@ def test_swap_by_newest_items_same_age_with_category():
         assert item.age == pytest.approx(2.5)
     for item in jesse.inventory:
         assert item.age == pytest.approx(2.5)
-  
