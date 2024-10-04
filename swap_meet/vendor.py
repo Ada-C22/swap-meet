@@ -3,7 +3,7 @@ class Vendor:
     Represents a Vendor with an invetory of items. 
     Attributes: inventory with list of items.
     Methods: add(item): Adds item to inventory, and returns item.
-             remove(item): Removes and returns item, or False if not found.
+    remove(item): Removes and returns item, or False if not found.
     '''
     
     def __init__(self, inventory = None):
@@ -14,7 +14,6 @@ class Vendor:
         return item
 
     def remove(self, item):
-         
         if item not in self.inventory:
             return False
         else:
