@@ -1,5 +1,5 @@
 import uuid
-from .condition_dict import condition_table
+from swap_meet.condition_dict import condition_table
 class Item:
     ''' 
     Represents an Item with a unique ID. 
@@ -26,7 +26,6 @@ class Item:
         '''
         Returns a description of the items condition based on its condition value.
         '''
-       
         if self.condition in condition_table.keys():
             return condition_table[int(self.condition)]
         

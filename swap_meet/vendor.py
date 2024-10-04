@@ -54,6 +54,8 @@ class Vendor:
         Arg: other_vendor(Vendor): the Vendor to swap with.
         Returns: bool: True if swap successful, False if either inventory is empty.
         '''
+        if not self.inventory or not other_vendor.inventory:
+            return False
         
         first_item = self.inventory[0]
         other_item = other_vendor.inventory[0]
@@ -63,7 +65,9 @@ class Vendor:
         '''
         Swaps the best items of specified categories with another value.
         '''
-
+        if not self.inventory or not other_vendor.inventory:
+            return False
+        
         my_best_item = self.get_best_by_category(their_priority)
         their_best_item = other_vendor.get_best_by_category(my_priority)
         return self.swap_items(other_vendor, my_best_item, their_best_item)
