@@ -1,4 +1,4 @@
-# from item import Item
+#from item import Item
 class Vendor:
     
     def __init__(self, inventory=None):
@@ -38,6 +38,12 @@ class Vendor:
                 best_condition = item.condition
                 best_in_category = item
         return best_in_category
+        # another implementation 
+        # try:
+        #     return max(items_in_category, key=lambda item: item.condition)
+        # except ValueError: 
+        #     return None 
+
     
     def swap_best_by_category(self, other_vendor, my_priority, their_priority):
         best_item_my_priority = other_vendor.get_best_by_category(my_priority)
@@ -70,3 +76,12 @@ class Vendor:
             return False 
         return self.swap_items_helper(other_vendor, my_first_item, thier_first_item)
         
+    def swap_by_newest(self, other_vendor):
+        try:
+            my_newest_item = min(self.inventory, key=lambda item: item.age)
+            thier_newest_item = min(other_vendor.inventory, key=lambda item: item.age)
+            return self.swap_items_helper(other_vendor, my_newest_item, thier_newest_item) 
+        except ValueError:
+            return False
+
+

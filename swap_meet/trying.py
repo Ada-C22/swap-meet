@@ -1,3 +1,5 @@
+# from vendor import Vendor
+# from item import Item
 # try_list = [ 1, 2, 3, 4]
 
 # def remove(item, a_list):
@@ -23,3 +25,11 @@
 
 # test = Testing()
 # print(test.return_name())
+# item_a = Item(age=5)
+# item_b = Item(age=10)
+# item_c = Item(age=11)
+
+# vendor = Vendor(
+#     inventory=[item_a, item_b, item_c]
+# )
+# print(vendor.sawp_by_newest())
