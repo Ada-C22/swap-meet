@@ -1,6 +1,10 @@
 from swap_meet.item import Item
-
 class Clothing(Item):
+    '''
+    Represents Clothing Item with a fabric attribulte.
+    Inherites from Items.
+    '''
+    
     def __init__(self, id=None, fabric="Unknown", condition=0):
         super().__init__(id, condition)
         self.fabric = fabric
