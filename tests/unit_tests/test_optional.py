@@ -35,7 +35,7 @@ def test_swap_by_newest_no_inventory_is_false():
     assert item_b in jesse.inventory
     assert item_c in jesse.inventory
 
-def test_swap_by_newest():
+def test_swap_by_newest_valid_input_true():
     # Arrange
     # me
     item_a = Decor(age=2)

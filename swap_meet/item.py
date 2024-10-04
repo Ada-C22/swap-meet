@@ -12,19 +12,19 @@ class Item:
         return type(self).__name__
     
     def condition_description(self):
-        match self.condition:
-            case x if 0 <= x < 1:
-                return "Yikes! This thing's seen better centuries."
-            case x if 1 <= x < 2:
-                return "Handle with care... and maybe a hazmat suit."
-            case x if 2 <= x < 3:
-                return "It's got 'character' (that's code for 'issues')."
-            case x if 3 <= x < 4:
-                return "Not too shabby, just don't look too closely."
-            case x if 4 <= x < 5:
-                return "Almost new, if you squint hard enough."
-            case x if x == 5:
-                return "Mint condition! Did you steal this from a time machine?"
-            case _:
-                return "Condition unknown. Is this from another dimension?"
+        x = self.condition
+        if x < 0 or x > 5:
+            return "Condition unknown. Is this from another dimension?"
+        elif x < 1:
+            return "Yikes! This thing's seen better centuries."
+        elif x < 2:
+            return "Handle with care... and maybe a hazmat suit."
+        elif x < 3:
+            return "It's got 'character' (that's code for 'issues')."
+        elif x < 4:
+            return "Not too shabby, just don't look too closely."
+        elif x < 5:
+            return "Almost new, if you squint hard enough."
+        else:
+            return "Mint condition! Did you steal this from a time machine?"
     
