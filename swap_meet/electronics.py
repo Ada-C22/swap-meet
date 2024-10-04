@@ -26,6 +26,6 @@ class Electronics(Item):
         self.type = type
 
     def __str__(self):
-        return  f"An object of type Electronics with id {self.id}. "\
-                f"This is a {self.type} device."\
-                f"It was produced on {self.age.strftime("%x")}."
+        item_type_line, produce_date_line = super().generate_description()
+        electronics_type_line = f"This is a {self.type} device."
+        return "\n".join([item_type_line, electronics_type_line, produce_date_line])

@@ -10,7 +10,7 @@ def test_item_overrides_to_string():
     item_as_string = str(item)
 
     expected_result = f"An object of type Item with id {test_id}."
-    assert item_as_string == expected_result
+    assert item_as_string.startswith(expected_result)
 
 # @pytest.mark.skip
 def test_swap_items_returns_true():

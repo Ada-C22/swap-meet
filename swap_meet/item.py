@@ -10,9 +10,13 @@ class Item:
     def get_category(self):
         return self.__class__.__name__
 
-    def __str__(self):
+    def generate_description(self):
+        item_type_line = f"An object of type {self.get_category()} with id {self.id}."
+        produce_date_line = f"It was produced on {self.age.strftime("%x")}."
+        return item_type_line, produce_date_line
 
-        return f"An object of type Item with id {self.id}."
+    def __str__(self):
+        return "\n".join(self.generate_description())
 
     def condition_description(self):
         descriptions = {
@@ -24,4 +28,3 @@ class Item:
             5: "Mint condition! An absolute treasure."
         }
         return descriptions.get(self.condition, "Condition unrecognized")
-

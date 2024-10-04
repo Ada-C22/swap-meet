@@ -26,7 +26,7 @@ class Clothing(Item):
 
 
     def __str__(self) -> str:
-        str_to_print = f"An object of type Clothing with id {self.id}. " \
-                        f"It is made from {self.fabric} fabric.\
-                        It was prodused on {self.age.strftime("%x")}"
-        return str_to_print
+        item_type_line, produce_date_line = super().generate_description()
+        item_fabric_line = f"It is made from {self.fabric} fabric."
+        return "\n".join([item_type_line, item_fabric_line, produce_date_line])
+

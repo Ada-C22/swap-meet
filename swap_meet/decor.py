@@ -29,6 +29,8 @@ class Decor(Item):
         self.length = length
 
     def __str__(self):
-        return  f"An object of type Decor with id {self.id}. "\
-                f"It takes up a {self.width} by {self.length} sized space. "\
-                f"It was produced on {self.age.strftime("%x")}."
+        item_type_line, produce_date_line = super().generate_description()
+        item_size_line = f"It takes up a {self.width} by {self.length} sized space. "
+        return "\n".join([item_type_line, item_size_line, produce_date_line])
+
+
