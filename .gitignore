@@ -1,3 +1,4 @@
+./drafts
 .vscode/
 *.DS_Store
 # GitHub's boilerplate Python gitignore
