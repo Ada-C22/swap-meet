@@ -1,6 +1,6 @@
 class Vendor:
     ''' 
-    Represents a vendor with an invetory of items. 
+    Represents a Vendor with an invetory of items. 
     Attributes: inventory with list of items.
     Methods: add(item): Adds item to inventory, and returns item.
              remove(item): Removes and returns item, or False if not found.
@@ -94,6 +94,7 @@ class Vendor:
             return None
         
         best_condition_object = category_inventory[0]
+        
         for object in category_inventory:
             if object.condition > best_condition_object.condition:
                 best_condition_object = object

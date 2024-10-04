@@ -1,7 +1,7 @@
 from swap_meet.item import Item
 class Decor(Item):
     '''
-    Represents decor item with width and length attributes.
+    Represents Decor Item with width and length attributes.
     Inherites from Item.
     '''
     

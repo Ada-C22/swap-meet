@@ -1,7 +1,7 @@
 from swap_meet.item import Item
 class Clothing(Item):
     '''
-    Represents clothing item with a fabric attribulte.
+    Represents Clothing Item with a fabric attribulte.
     Inherites from Items.
     '''
     

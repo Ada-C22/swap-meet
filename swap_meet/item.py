@@ -2,7 +2,7 @@ import uuid
 from .condition_dict import condition_table
 class Item:
     ''' 
-    Represents an item with a unique ID. 
+    Represents an Item with a unique ID. 
     When stringified, returns a description including its type of ID.
     '''
     

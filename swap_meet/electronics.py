@@ -1,7 +1,7 @@
 from swap_meet.item import Item
 class Electronics(Item):
     '''
-    Represents an electronic item with a type attribute.
+    Represents an Electronic Item with a type attribute.
     Inherits from Item
     '''
     
