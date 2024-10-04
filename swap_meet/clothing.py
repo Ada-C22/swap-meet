@@ -29,4 +29,3 @@ class Clothing(Item):
         item_type_line, produce_date_line = super().generate_description()
         item_fabric_line = f"It is made from {self.fabric} fabric."
         return "\n".join([item_type_line, item_fabric_line, produce_date_line])
-
