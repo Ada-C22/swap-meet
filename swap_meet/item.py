@@ -13,8 +13,8 @@ class Item:
         return f"An object of type {self.get_category()} with id {self.id}."
     
     def condition_description(self):
-        if self.condition == 0:
-            return "You should seriously consider not taking this one."
+        # if self.condition == 0:
+        #     return "You should seriously consider not taking this one."
         if self.condition > 0 and self.condition < 1:
             return "It's barely holding together."
         if self.condition >= 1 and self.condition < 2:
