@@ -1,4 +1,3 @@
-from .item import Item
 class Vendor:
     def __init__(self, inventory=None):
         self.inventory = inventory or []
@@ -23,7 +22,7 @@ class Vendor:
     def swap_items(self, other_vendor, my_item, their_item):
         if my_item not in self.inventory or their_item not in other_vendor.inventory:
             return False
-        
+
         other_vendor.add(my_item)
         self.add(their_item)
         other_vendor.remove(their_item)
@@ -51,9 +50,9 @@ class Vendor:
         if not items:
             return None
         
-        best_item = items[0]
-        for item in items[1:]:
-            if item.condition > best_item.condition:
+        best_item = None
+        for item in items:
+            if best_item is None or item.condition > best_item.condition:
                 best_item = item
     
         return best_item
@@ -65,12 +64,13 @@ class Vendor:
         
         return self.swap_items(other_vendor, best_from_self, best_from_other)
     
-    def find_newest_item(self, iterable):
-        if not iterable:
+    def find_newest_item(self, items):
+        if not items:
             return None
-        newest_item = iterable[0]
-        for item in iterable[1:]:
-            if item.age < newest_item.age:
+            
+        newest_item = None
+        for item in items:
+            if newest_item is None or item.age < newest_item.age:
                 newest_item = item
 
         return newest_item
