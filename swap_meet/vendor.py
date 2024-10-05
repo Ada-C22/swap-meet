@@ -8,12 +8,12 @@ class Vendor:
             self.inventory = []
 
     def add(self,item):
-        inventory = self.get_inventory()
+        inventory = self.inventory
         inventory.append(item)
         return item
     
     def remove(self,item):
-        inventory = self.get_inventory()
+        inventory = self.inventory
         if item in inventory:
             inventory.remove(item)
             return item
@@ -21,7 +21,7 @@ class Vendor:
             return False
     
     def get_by_id(self,item_id):
-        for item in self.get_inventory(): 
+        for item in self.inventory: 
             if item.id == item_id:
                 return item
         return None
@@ -43,8 +43,8 @@ class Vendor:
             return False
         
     def swap_first_item(self, other_vendor):
-        my_inventory = self.get_inventory()
-        their_inventory = other_vendor.get_inventory()
+        my_inventory = self.inventory
+        their_inventory = other_vendor.inventory
         if self.check_lists_valid(my_inventory, their_inventory) == True:
             my_first_item = self.get_first_item(my_inventory)
             their_first_item = self.get_first_item(their_inventory)
@@ -55,21 +55,17 @@ class Vendor:
     
     def get_by_category(self, category):
         items_in_category = []
-        for item in self.get_inventory():  
+        for item in self.inventory:  
             if item.get_category() == category: 
                 items_in_category.append(item)
         return items_in_category
 
     def get_best_by_category(self, category):
-        best_item = None
         items_in_category = self.get_by_category(category)
-        self.get_best_item_by_keyword(items_in_category, condition)
-        # for item in items_in_category:
-        #     if best_item == None: 
-        #         best_item = item
-        #     elif best_item.condition < item.condition:
-        #         best_item = item
-        # return best_item
+        return self.get_max_item(items_in_category, "condition")
+    
+    def get_oldest(self):
+        return self.get_max_item(self.inventory, "age")
     
     def swap_best_by_category(self, other_vendor, my_priority, their_priority):
         my_item_swap = self.get_best_by_category(their_priority)
@@ -80,19 +76,11 @@ class Vendor:
         
 
 ##### Helper functions ######
-
-    def get_inventory(self):
-        return self.inventory
-    
-    def list_not_empty(self, list_input):
-        if not list_input:
-            return False
-        else:
-            return True
+        
     def check_lists_valid(self, list_1, list_2):
-        result_1 = self.list_not_empty(list_1)
-        result_2 = self.list_not_empty(list_2)
-        if result_1 is True and result_2 is True: 
+        list_1_empty = not list_1
+        list_2_empty = not list_2
+        if list_1_empty is False and list_2_empty is False: 
             return True
         else: 
             return False
@@ -103,13 +91,6 @@ class Vendor:
     
 
     def get_max_item(self, item_list, key_arg):
-        return item_list, lambda item: item[key_arg]
-    
-    def get_best_item_by_keyword(self, item_list, item_keyword):
-        best_item = None
-        for item in item_list:
-            if best_item == None: 
-                best_item = item
-            elif best_item.item_keyword < item.item_keyword:
-                best_item = item
-        return best_item
+        if not item_list:
+            return None
+        return max(item_list, key=lambda item: getattr(item, key_arg))
