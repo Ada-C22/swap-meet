@@ -1,6 +1,7 @@
 from swap_meet.item_helper_functions import get_highest_item
 from swap_meet.item_helper_functions import get_newest_item
 
+
 class Vendor:
     def __init__(self, inventory=None):
         self.inventory = [] if inventory is None else inventory

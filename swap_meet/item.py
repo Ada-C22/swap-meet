@@ -1,5 +1,6 @@
 import uuid
 
+
 class Item:
     def __init__(self, id=None, condition=0, age=0):
         self.condition = condition
