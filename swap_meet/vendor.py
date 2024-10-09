@@ -1,18 +1,17 @@
 class Vendor:
     def __init__(self, inventory=None):
-        if not inventory:
-            self.inventory = []
-        else:
-            self.inventory = inventory
+        self.inventory = [] if inventory is None else inventory
 
     def add(self, item):
         self.inventory.append(item)
         return item
 
     def remove(self, item):
-        if item in self.inventory:
-            self.inventory.remove(item)
-            return item
+        if item not in self.inventory:
+            return False
+
+        self.inventory.remove(item)
+        return item
 
     def get_by_id(self, item_id):
         for item in self.inventory:
@@ -22,10 +21,11 @@ class Vendor:
     def swap_items(self, other_vendor, my_item, their_item):
         if my_item not in self.inventory or their_item not in other_vendor.inventory:
             return False
-        other_vendor.inventory.remove(their_item)
-        self.inventory.append(their_item)
-        self.inventory.remove(my_item)
-        other_vendor.inventory.append(my_item)
+        
+        my_item_index = self.inventory.index(my_item)
+        their_item_index = other_vendor.inventory.index(their_item)
+        other_vendor.inventory[their_item_index], self.inventory[my_item_index] = my_item, their_item
+
         return True
     
     def swap_first_item(self, other_vendor):
@@ -34,19 +34,17 @@ class Vendor:
         first_item = self.inventory[0]
         first_item_other = other_vendor.inventory[0]
         if  first_item  and first_item_other:
-            self.inventory.remove(first_item)
-            other_vendor.inventory.append(first_item)
-            other_vendor.inventory.remove(first_item_other)
-            self.inventory.append(first_item_other)
+
+            my_item_index = self.inventory.index(first_item)
+            their_item_index = other_vendor.inventory.index(first_item_other)
+            other_vendor.inventory[their_item_index], self.inventory[my_item_index] = first_item, first_item_other
+            
             return True
-    
+ 
     def get_by_category(self, category="Unknown"):
-        return[item for item in self.inventory if item.get_category() == category]
+        return [item for item in self.inventory if item.get_category() == category]
     
-    def get_highest_item(self, list_items, key=lambda x: x):
-        if not list_items:
-            return False
-        
+    def get_highest_item(self, list_items, key):     
         highest = list_items[0]
         for item in list_items:
             if key(item) > key(highest):
@@ -57,9 +55,9 @@ class Vendor:
         items_in_category = self.get_by_category(category)
 
         if not items_in_category:
-            return False
+            return None
 
-        best_item = self.get_highest_item(items_in_category, key= lambda item: item.condition)
+        best_item = self.get_highest_item(items_in_category, key=lambda item: item.condition)
         return best_item
 
     def swap_best_by_category(self, other_vendor, my_priority, their_priority):
@@ -69,10 +67,7 @@ class Vendor:
         swap = self.swap_items(other_vendor, other_vendor_priority, personal_priority)
         return swap
     
-    def get_newest_item(self, list_items, key=lambda x: x):
-        if not list_items:
-            return False
-        
+    def get_newest_item(self, list_items, key):
         newest = list_items[0]
         for item in list_items:
             if key(item) < key(newest):
@@ -83,9 +78,8 @@ class Vendor:
         if not self.inventory or not other_vendor.inventory:
             return False
         my_newest_item = self.get_newest_item(self.inventory, key=lambda item: item.age)     
-        other_vendors_newest_item = (
-            other_vendor.get_newest_item(other_vendor.inventory, key=lambda item: item.age)
-            )
+        other_vendors_newest_item = other_vendor.get_newest_item(
+                other_vendor.inventory, key=lambda item: item.age
+                )
 
-        swap_newest_items = self.swap_items(other_vendor, my_newest_item, other_vendors_newest_item)
-        return swap_newest_items
+        return self.swap_items(other_vendor, my_newest_item, other_vendors_newest_item)

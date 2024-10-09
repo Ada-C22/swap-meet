@@ -64,7 +64,7 @@ def test_best_by_category_no_matches_is_none():
 
     best_item = tai.get_best_by_category("Electronics")
 
-    assert best_item == False
+    assert best_item == None
 
 # @pytest.mark.skip
 def test_best_by_category_with_duplicates():
@@ -109,10 +109,10 @@ def test_swap_best_by_category():
         their_priority="Decor"
     )
 
-    assert result 
+    assert result == True
 
-    assert len(tai.inventory) == len(jesse.inventory)
-
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
     assert item_c not in tai.inventory
     assert item_c in jesse.inventory
     assert item_f not in jesse.inventory
@@ -147,7 +147,8 @@ def test_swap_best_by_category_reordered():
         their_priority="Decor"
     )
 
-    assert len(jesse.inventory) == len(tai.inventory)
+    assert len(tai.inventory) == 3
+    assert len(jesse.inventory) == 3
     assert item_c not in tai.inventory
     assert item_c in jesse.inventory
     assert item_f not in jesse.inventory
@@ -156,7 +157,7 @@ def test_swap_best_by_category_reordered():
     assert item_a not in jesse.inventory
     assert item_d in jesse.inventory
     assert item_d not in tai.inventory
-    assert result
+    assert result == True
 
 # @pytest.mark.skip
 def test_swap_best_by_category_no_inventory_is_false():

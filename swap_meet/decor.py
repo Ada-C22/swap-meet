@@ -10,7 +10,4 @@ class Decor(Item):
         return "Decor"
     
     def __str__(self):
-        return (
-            f'An object of type Decor with id {self.id}. '
-            f'It takes up a {self.width} by {self.length} sized space.'
-            )
+        return f"{super().__str__()} It takes up a {self.width} by {self.length} sized space."

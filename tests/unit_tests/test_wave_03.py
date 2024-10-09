@@ -131,11 +131,16 @@ def test_swap_items_from_their_empty_returns_false():
 
     result = fatimah.swap_items(jolie, item_b, nobodys_item)
 
-    try:
-        result == False
-    except ValueError as err:
-        print(f'An exception occurred. Here are the error details {err}')
+    with pytest.raises(ValueError):
+        if result == False:
+            raise ValueError(f"An exception occurred.")
 
     assert len(fatimah.inventory) == 3
     assert len(jolie.inventory) == 0
     assert result == False
+    assert item_a in fatimah.inventory
+    assert item_b in fatimah.inventory
+    assert item_c in fatimah.inventory
+    assert item_a not in jolie.inventory
+    assert item_b not in jolie.inventory
+    assert item_c not in jolie.inventory

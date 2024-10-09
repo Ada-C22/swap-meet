@@ -5,37 +5,25 @@ class Item:
         self.condition = condition
         self.age = age
         
-        if id == None:
-            self.id = uuid.uuid4().int
-        else:
-            self.id = id
+        self.id = uuid.uuid4().int if id is None else id
 
     def get_category(self):
-        return "Item"
+        return type(self).__name__
 
     def __str__(self):
-        return f'An object of type Item with id {self.id}.'
+        return f"An object of type {self.get_category()} with id {self.id}."
     
     def condition_description (self):
-        condition_phrases = ['it depends', 'needs to function', 'pairs well', 
-                            'just because', 'best product to exist', 'you need this']
-        
-        return condition_phrases[self.condition]
 
-'''
-Another possible solution to condition_description using a dictionary.
-putting this here to remember because we thought it was cool how you
-solve the condition_description function in both of these completely
-different ways.
+        condition_phrase = {
 
-def condition_description(self):
-        descriptions={
-            0: “Heavy used”,
-            1: “Some notorious wear”,
-            2: “Mild scratches or wear”,
-            3: ” used”,
-            4: “like new”,
-            5: “new”
+            0: "it depends",
+            1: "needs to function",
+            2: "pairs well",
+            3: "just because",
+            4: "best product to exist",
+            5: "you need this"
         }
-        return descriptions.get(self.condition, “Unknown condition”)
-'''
+
+        return condition_phrase.get(self.condition, "Unknown condition")
+        

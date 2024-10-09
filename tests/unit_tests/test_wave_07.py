@@ -115,7 +115,7 @@ def test_swap_newest_items_from_their_empty_returns_false():
     try:
         result == False
     except ValueError as err:
-        print(f'An exception occurred. Here are the error details {err}')
+        print(f"An exception occurred. Here are the error details {err}")
 
     assert len(fatimah.inventory) == 3
     assert len(jolie.inventory) == 0
