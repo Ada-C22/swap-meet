@@ -1,4 +1,4 @@
-def get_highest_item(list_items, key=lambda x: x):
+def get_highest_item(list_items, key):
         if not list_items:
             return False
         
@@ -7,6 +7,7 @@ def get_highest_item(list_items, key=lambda x: x):
             if key(item) > key(highest):
                 highest = item
         return highest
+
 
 def get_newest_item(list_items, key):
     newest = list_items[0]

@@ -5,5 +5,6 @@ class Electronics(Item):
         super().__init__(id, condition, age)
         self.type = type
 
+
     def __str__(self):
         return f"{super().__str__()} This is a {self.type} device."
