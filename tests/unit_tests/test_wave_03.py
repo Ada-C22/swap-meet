@@ -38,7 +38,7 @@ def test_swap_items_returns_true():
     assert item_d not in jolie.inventory
     assert item_e in jolie.inventory
     assert item_b in jolie.inventory
-    assert result
+    assert result == True
 
 #@pytest.mark.skip
 def test_swap_items_when_my_item_is_missing_returns_false():
@@ -65,7 +65,7 @@ def test_swap_items_when_my_item_is_missing_returns_false():
     assert len(jolie.inventory) == 2
     assert item_d in jolie.inventory
     assert item_e in jolie.inventory
-    assert not result
+    assert result == False
 
 #@pytest.mark.skip
 def test_swap_items_when_their_item_is_missing_returns_false():
@@ -92,7 +92,7 @@ def test_swap_items_when_their_item_is_missing_returns_false():
     assert len(jolie.inventory) == 2
     assert item_d in jolie.inventory
     assert item_e in jolie.inventory
-    assert not result
+    assert result == False
 
 # @pytest.mark.skip
 def test_swap_items_from_my_empty_returns_false():
@@ -112,7 +112,7 @@ def test_swap_items_from_my_empty_returns_false():
 
     assert len(fatimah.inventory) == 0
     assert len(jolie.inventory) == 2
-    assert not result
+    assert result == False
 
 # @pytest.mark.skip
 def test_swap_items_from_their_empty_returns_false():
