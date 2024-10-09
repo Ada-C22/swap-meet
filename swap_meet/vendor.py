@@ -32,7 +32,6 @@ class Vendor:
         my_item_index = self.inventory.index(my_item)
         their_item_index = other_vendor.inventory.index(their_item)
         other_vendor.inventory[their_item_index], self.inventory[my_item_index] = my_item, their_item
-
         return True
     
 
@@ -47,7 +46,6 @@ class Vendor:
             my_item_index = self.inventory.index(first_item)
             their_item_index = other_vendor.inventory.index(first_item_other)
             other_vendor.inventory[their_item_index], self.inventory[my_item_index] = first_item, first_item_other
-            
             return True
  
 
